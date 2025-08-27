@@ -207,7 +207,7 @@ const AlbumDetail = () => {
       } else if (e.key === 'Escape') {
         closeLightbox();
       }
-    };
+    }, [currentImage, nextImage, prevImage]);
 
     document.addEventListener('keydown', handleKeyPress);
     return () => document.removeEventListener('keydown', handleKeyPress);
