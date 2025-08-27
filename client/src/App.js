@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 
@@ -11,19 +11,39 @@ import Contact from './components/Contact';
 import Legal from './components/Legal';
 
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <Router>
       <div className="App">
         <header className="App-header">
           <nav className="navbar">
             <div className="nav-brand">
-              <Link to="/">Thomas Prêtre</Link>
+              <Link to="/" onClick={closeMenu}>Thomas Prêtre</Link>
             </div>
-            <ul className="nav-menu">
-              <li><Link to="/">Accueil</Link></li>
-              <li><Link to="/gallery">Galerie</Link></li>
-              <li><Link to="/about">À propos</Link></li>
-              <li><Link to="/contact">Contact</Link></li>
+            <button
+              className="hamburger-menu"
+              onClick={toggleMenu}
+              aria-label="Toggle menu"
+              aria-expanded={isMenuOpen}
+            >
+              <span className={`hamburger-line ${isMenuOpen ? 'active' : ''}`}></span>
+              <span className={`hamburger-line ${isMenuOpen ? 'active' : ''}`}></span>
+              <span className={`hamburger-line ${isMenuOpen ? 'active' : ''}`}></span>
+            </button>
+            <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
+              <li><Link to="/" onClick={closeMenu}>Accueil</Link></li>
+              <li><Link to="/gallery" onClick={closeMenu}>Galerie</Link></li>
+              <li><Link to="/about" onClick={closeMenu}>À propos</Link></li>
+              <li><Link to="/contact" onClick={closeMenu}>Contact</Link></li>
             </ul>
           </nav>
         </header>

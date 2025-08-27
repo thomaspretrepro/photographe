@@ -37,7 +37,7 @@
 .slide-image {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
 }
 
@@ -184,16 +184,27 @@
   text-decoration: none;
   font-weight: 500;
   letter-spacing: 1px;
-  padding: 8px 12px;
+  padding: 12px;
   border: 1px solid rgba(255,255,255,0.3);
   transition: all 0.3s ease;
   text-align: center;
-  min-width: 40px;
+  min-width: 48px;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
 }
 
 .social-links a:hover {
   background: white;
   color: #333;
+}
+
+.social-links a svg {
+  width: 24px;
+  height: 24px;
+  transition: all 0.3s ease;
 }
 
 /* About Minimal Section */
@@ -410,18 +421,24 @@
     position: static;
     transform: none;
     text-align: center;
-    margin-top: 3rem;
+    margin-top: 12rem;
   }
 
   .slider-nav {
     bottom: 2rem;
+    gap: 0.5rem;
+  }
+
+  .slide-indicators{
+    gap : 0.5rem;
   }
 
   .social-links {
     flex-direction: row;
     bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
+    right: auto;
+    left: 1rem;
+    transform: none;
   }
 
   .about-minimal {
