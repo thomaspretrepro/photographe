@@ -54,7 +54,8 @@ function App() {
         <header className="App-header">
           <nav className="navbar">
             <div className="nav-brand">
-              <Link to="/photographe" onClick={closeMenu}>Thomas Prêtre</Link>
+              {/* <Link to="/photographe" onClick={closeMenu}>Thomas Prêtre</Link> */}
+              <Link to="/" onClick={closeMenu}>Thomas Prêtre</Link>
             </div>
             <button
               className="hamburger-menu"
@@ -67,7 +68,8 @@ function App() {
               <span className={`hamburger-line ${isMenuOpen ? 'active' : ''}`}></span>
             </button>
             <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
-              <li><Link to="/photographe" onClick={closeMenu}>Accueil</Link></li>
+              {/* <li><Link to="/photographe" onClick={closeMenu}>Accueil</Link></li> */}
+              <li><Link to="/" onClick={closeMenu}>Accueil</Link></li>
               <li><Link to="/gallery" onClick={closeMenu}>Galerie</Link></li>
               <li><Link to="/about" onClick={closeMenu}>À propos</Link></li>
               <li><Link to="/contact" onClick={closeMenu}>Contact</Link></li>
@@ -79,7 +81,7 @@ function App() {
           <Routes>
             {/* Public Routes */}
             <Route path="/" element={<Home />} />
-            <Route path="/photographe" element={<Home />} />
+            {/* <Route path="/photographe" element={<Home />} /> */}
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/gallery/:albumId" element={<AlbumDetail />} />
             <Route path="/about" element={<About />} />
