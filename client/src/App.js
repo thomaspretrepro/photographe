@@ -27,7 +27,7 @@ function App() {
         <header className="App-header">
           <nav className="navbar">
             <div className="nav-brand">
-              <Link to="/" onClick={closeMenu}>Thomas Prêtre</Link>
+              <Link to="/photographe" onClick={closeMenu}>Thomas Prêtre</Link>
             </div>
             <button
               className="hamburger-menu"
