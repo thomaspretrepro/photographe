@@ -50,7 +50,7 @@ function App() {
 
         <main>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/photographe" element={<Home />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/gallery/:albumId" element={<AlbumDetail />} />
             <Route path="/about" element={<About />} />
