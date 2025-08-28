@@ -40,7 +40,7 @@ function App() {
               <span className={`hamburger-line ${isMenuOpen ? 'active' : ''}`}></span>
             </button>
             <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
-              <li><Link to="/" onClick={closeMenu}>Accueil</Link></li>
+              <li><Link to="/photographe" onClick={closeMenu}>Accueil</Link></li>
               <li><Link to="/gallery" onClick={closeMenu}>Galerie</Link></li>
               <li><Link to="/about" onClick={closeMenu}>À propos</Link></li>
               <li><Link to="/contact" onClick={closeMenu}>Contact</Link></li>
