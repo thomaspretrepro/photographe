@@ -142,7 +142,7 @@ function App() {
 
         <footer className="footer">
           <div className="footer-content">
-            <p>&copy; 2025 Thomas Prêtre Photography. Tous droits réservés.</p>
+            <p>&copy; 2025 Thomas Prêtre. Tous droits réservés.</p>
             <div className="footer-links">
               <Link to="/legal">Mentions légales</Link>
               <Link to="/admin" className="admin-link">Administration</Link>
