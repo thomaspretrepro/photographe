@@ -29,6 +29,9 @@ jobs:
           cd client
           CI='' npm run build
 
+      - name: Add CNAME file
+          run: echo "www.thomaspretre.fr" > ./CNAME
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
