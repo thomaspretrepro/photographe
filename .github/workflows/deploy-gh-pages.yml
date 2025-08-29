@@ -32,6 +32,9 @@ jobs:
       - name: Add CNAME file
         run: echo "thomaspretre.fr" > ./CNAME
 
+      - name: Add 404.html file
+        run: echo '<!DOCTYPE html><meta http-equiv="refresh" content="0; url=/" /><script>location.replace("/" + location.search + location.hash)</script>' > ./client/build/404.html
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
