@@ -30,7 +30,7 @@ jobs:
           CI='' npm run build
 
       - name: Add CNAME file
-        run: echo "thomaspretre.fr" > ./CNAME
+        run: echo "thomaspretre.fr" > ./client/build/CNAME
 
       - name: Add 404.html file
         run: echo '<!DOCTYPE html><meta http-equiv="refresh" content="0; url=/" /><script>location.replace("/" + location.search + location.hash)</script>' > ./client/build/404.html
