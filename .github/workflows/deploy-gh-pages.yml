@@ -30,7 +30,7 @@ jobs:
           CI='' npm run build
 
       - name: Add CNAME file
-          run: echo "thomaspretre.fr" > ././CNAME
+        run: echo "thomaspretre.fr" > ./CNAME
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
