@@ -70,11 +70,11 @@ const AdminLogin = ({ onLogin }) => {
             </button>
           </form>
           
-          <div className="login-info">
+          {/* <div className="login-info">
             <p><strong>Identifiants de test:</strong></p>
             <p>Utilisateur: admin</p>
             <p>Mot de passe: admin123</p>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
