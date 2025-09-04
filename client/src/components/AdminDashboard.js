@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { getGalleryAlbums, initializeAlbumsData } from '../data/albums';
+import { getGalleryAlbums, initializeAlbumsData, saveAlbumsToServer } from '../data/albums';
 import './AdminDashboard.css';
 
 const AdminDashboard = ({ onLogout }) => {
@@ -10,6 +10,8 @@ const AdminDashboard = ({ onLogout }) => {
     totalPhotos: 0,
     categories: {}
   });
+  const [notification, setNotification] = useState(null);
+  const [isSaving, setIsSaving] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -56,6 +58,36 @@ const AdminDashboard = ({ onLogout }) => {
     }
   };
 
+  const handleSaveToServer = async () => {
+    setIsSaving(true);
+    setNotification(null);
+    
+    try {
+      const result = await saveAlbumsToServer();
+      
+      if (result.success) {
+        setNotification({
+          type: 'success',
+          message: result.message
+        });
+      } else {
+        setNotification({
+          type: 'error',
+          message: result.message
+        });
+      }
+    } catch (error) {
+      setNotification({
+        type: 'error',
+        message: 'Erreur lors de la sauvegarde'
+      });
+    } finally {
+      setIsSaving(false);
+      // Auto-hide notification after 5 seconds
+      setTimeout(() => setNotification(null), 5000);
+    }
+  };
+
   return (
     <div className="admin-dashboard">
       <div className="admin-header">
@@ -72,6 +104,12 @@ const AdminDashboard = ({ onLogout }) => {
 
       <div className="admin-content">
         <div className="container">
+          {/* Notification */}
+          {notification && (
+            <div className={`notification ${notification.type}`}>
+              {notification.message}
+            </div>
+          )}
           {/* Stats Cards */}
           <div className="stats-grid">
             <div className="stat-card">
@@ -116,6 +154,15 @@ const AdminDashboard = ({ onLogout }) => {
                 <h3>Gérer Albums</h3>
                 <p>Modifier ou supprimer des albums</p>
               </Link>
+              <button
+                onClick={handleSaveToServer}
+                className="action-card export-btn"
+                disabled={isSaving}
+              >
+                <div className="action-icon">{isSaving ? '⏳' : '💾'}</div>
+                <h3>{isSaving ? 'Sauvegarde...' : 'Sauvegarder'}</h3>
+                <p>{isSaving ? 'Écriture sur le serveur...' : 'Écrire les modifications sur albums.js'}</p>
+              </button>
             </div>
           </div>
 
