@@ -1,21 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getGalleryAlbums } from '../data/albums';
 import './Gallery.css';
 
 const Gallery = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [categories, setCategories] = useState([]);
 
   // Get albums data from shared source
   const albums = getGalleryAlbums();
 
-  const categories = [
-    { key: 'all', label: 'Tous les Albums' },
-    { key: 'portrait', label: 'Portraits' },
-    { key: 'landscape', label: 'Paysages' },
-    { key: 'concerts', label: 'Concerts' },
-    { key: 'essais', label: 'Essais' }
-  ];
+  // Function to get dynamic categories from existing albums
+  const getDynamicCategories = () => {
+    const savedAlbums = JSON.parse(localStorage.getItem('albumsData') || '[]');
+    const existingCategories = [...new Set(savedAlbums.map(album => album.category))];
+    
+    // Default category labels mapping
+    const categoryLabels = {
+      'portrait': 'Portraits',
+      'landscape': 'Paysages',
+      'concerts': 'Concerts',
+      'essais': 'Essais',
+      'event': 'Événements'
+    };
+    
+    // Start with "All" category
+    const dynamicCategories = [{ key: 'all', label: 'Tous les Albums' }];
+    
+    // Add existing categories with proper labels
+    existingCategories.forEach(category => {
+      if (category) {
+        const label = categoryLabels[category] || category.charAt(0).toUpperCase() + category.slice(1);
+        dynamicCategories.push({ key: category, label });
+      }
+    });
+    
+    return dynamicCategories;
+  };
+
+  // Update categories when component mounts or albums change
+  useEffect(() => {
+    setCategories(getDynamicCategories());
+  }, [albums]);
 
   const filteredAlbums = selectedCategory === 'all'
     ? albums
