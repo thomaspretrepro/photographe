@@ -1,3 +1,5 @@
+import { GITHUB_CONFIG, isConfigurationComplete } from '../config/github.js';
+
 export const albumsData = [
   {
     "id": "portraits-claire-cerceaux",
