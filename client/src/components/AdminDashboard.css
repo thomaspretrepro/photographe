@@ -556,3 +556,73 @@
     padding: 1.5rem;
   }
 }
+
+/* Configuration info section */
+.config-info {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 15px;
+}
+
+.config-info p {
+  margin: 5px 0;
+  font-size: 0.9em;
+}
+
+.config-info strong {
+  color: #333;
+}
+
+/* Disabled input styling */
+.form-group input:disabled {
+  background-color: #f8f9fa;
+  color: #6c757d;
+  cursor: not-allowed;
+  border-color: #e9ecef;
+}
+
+/* Info card styling */
+.info-card {
+  background: #f8f9fa !important;
+  border: 1px solid #e9ecef !important;
+  cursor: default !important;
+}
+
+.info-card:hover {
+  transform: none !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Configuration warning */
+.config-warning {
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  color: #856404;
+}
+
+.config-warning h3 {
+  margin-top: 0;
+  color: #856404;
+}
+
+.config-warning code {
+  background: #f8f9fa;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: monospace;
+  color: #495057;
+}
+
+.config-warning ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.config-warning li {
+  margin: 5px 0;
+}
