@@ -39,8 +39,7 @@ export const GITHUB_CONFIG = {
 // Fonction pour vérifier si la configuration est complète
 export const isConfigurationComplete = () => {
   return GITHUB_CONFIG.owner !== 'VOTRE_USERNAME' &&
-         GITHUB_CONFIG.repo !== 'VOTRE_REPO' &&
-         GITHUB_CONFIG.token !== 'VOTRE_TOKEN_GITHUB';
+         GITHUB_CONFIG.repo !== 'VOTRE_REPO';
 };
 
 // Fonction pour obtenir l'URL du repository

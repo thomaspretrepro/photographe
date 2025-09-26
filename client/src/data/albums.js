@@ -681,14 +681,22 @@ export const downloadAlbumsJS = () => {
 
 import { GITHUB_CONFIG, isConfigurationComplete } from '../config/github';
 
-// Helper function to get GitHub token (now from shared config)
+// Helper function to get GitHub token (from localStorage)
 export const getGitHubToken = () => {
-  return GITHUB_CONFIG.token;
+  return localStorage.getItem('github_token');
+};
+
+// Helper function to set GitHub token
+export const setGitHubToken = (token) => {
+  localStorage.setItem('github_token', token);
 };
 
 // Helper function to get complete configuration
 export const getCompleteConfig = () => {
-  return GITHUB_CONFIG;
+  return {
+    ...GITHUB_CONFIG,
+    token: getGitHubToken()
+  };
 };
 
 // Helper function to generate complete albums.js file content
@@ -817,6 +825,16 @@ export const publishToGitHub = async (repoOwner, repoName, githubToken) => {
 
 // Helper function to save albums data to GitHub (main function)
 export const saveAlbumsToGitHub = async () => {
+  const token = getGitHubToken();
+  
+  if (!token) {
+    return {
+      success: false,
+      message: 'Token GitHub requis. Veuillez configurer votre token d\'accès.',
+      requiresToken: true
+    };
+  }
+  
   if (!isConfigurationComplete()) {
     return {
       success: false,
@@ -825,7 +843,7 @@ export const saveAlbumsToGitHub = async () => {
     };
   }
   
-  return await publishToGitHub(GITHUB_CONFIG.owner, GITHUB_CONFIG.repo, GITHUB_CONFIG.token);
+  return await publishToGitHub(GITHUB_CONFIG.owner, GITHUB_CONFIG.repo, token);
 };
 
 // Helper function to get GitHub configuration (read-only)

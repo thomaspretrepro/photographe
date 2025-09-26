@@ -4,6 +4,8 @@ import {
   getGalleryAlbums,
   initializeAlbumsData,
   saveAlbumsToGitHub,
+  setGitHubToken,
+  getGitHubToken,
   getGitHubConfig
 } from '../data/albums';
 import { GITHUB_CONFIG, isConfigurationComplete } from '../config/github';
@@ -18,12 +20,27 @@ const AdminDashboard = ({ onLogout }) => {
   });
   const [notification, setNotification] = useState(null);
   const [isSaving, setIsSaving] = useState(false);
+  const [showGitHubConfig, setShowGitHubConfig] = useState(false);
+  const [gitHubConfig, setGitHubConfig] = useState({
+    owner: '',
+    repo: '',
+    token: ''
+  });
   const navigate = useNavigate();
 
   useEffect(() => {
     // Initialize data with all existing photos
     initializeAlbumsData();
     loadData();
+    
+    // Load GitHub configuration
+    const config = getGitHubConfig();
+    const token = getGitHubToken();
+    setGitHubConfig({
+      owner: config.owner || '',
+      repo: config.repo || '',
+      token: token || ''
+    });
   }, []);
 
   const loadData = () => {
@@ -77,6 +94,9 @@ const AdminDashboard = ({ onLogout }) => {
           message: result.message
         });
       } else {
+        if (result.requiresToken || result.requiresConfig) {
+          setShowGitHubConfig(true);
+        }
         setNotification({
           type: 'error',
           message: result.message
@@ -221,6 +241,95 @@ const AdminDashboard = ({ onLogout }) => {
         </div>
       </div>
 
+      {/* GitHub Configuration Modal */}
+      {showGitHubConfig && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h2>Configuration GitHub</h2>
+              <button
+                className="modal-close"
+                onClick={() => setShowGitHubConfig(false)}
+              >
+                ×
+              </button>
+            </div>
+            <div className="modal-body">
+              <div className="config-section">
+                <h3>Repository GitHub (Configuration partagée)</h3>
+                <div className="form-group">
+                  <label>Nom d'utilisateur/Organisation :</label>
+                  <input
+                    type="text"
+                    value={gitHubConfig.owner}
+                    disabled
+                    placeholder="Configuration partagée"
+                  />
+                  <small>Cette configuration est partagée et définie dans le code</small>
+                </div>
+                <div className="form-group">
+                  <label>Nom du repository :</label>
+                  <input
+                    type="text"
+                    value={gitHubConfig.repo}
+                    disabled
+                    placeholder="Configuration partagée"
+                  />
+                  <small>Cette configuration est partagée et définie dans le code</small>
+                </div>
+              </div>
+              
+              <div className="config-section">
+                <h3>Token d'accès GitHub</h3>
+                <div className="form-group">
+                  <label>Personal Access Token :</label>
+                  <input
+                    type="password"
+                    value={gitHubConfig.token}
+                    onChange={(e) => handleConfigChange('token', e.target.value)}
+                    placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
+                  />
+                  <small>
+                    Créez un token sur GitHub : Settings → Developer settings → Personal access tokens → Tokens (classic)
+                    <br />
+                    Permissions requises : <code>repo</code> et <code>workflow</code>
+                  </small>
+                </div>
+              </div>
+              
+              <div className="config-section">
+                <h3>Instructions</h3>
+                <ol>
+                  <li>Créez un Personal Access Token sur GitHub avec les permissions <code>repo</code> et <code>workflow</code></li>
+                  <li>Saisissez votre token ci-dessus (il sera stocké localement dans votre navigateur)</li>
+                  <li>La configuration du repository est partagée et définie dans le code</li>
+                  <li>Testez la publication</li>
+                </ol>
+                <div className="config-info">
+                  <p><strong>Repository configuré :</strong> {GITHUB_CONFIG.owner}/{GITHUB_CONFIG.repo}</p>
+                  <p><strong>Branche :</strong> {GITHUB_CONFIG.branch}</p>
+                  <p><strong>Configuration complète :</strong> {isConfigurationComplete() ? '✅ Oui' : '❌ Non'}</p>
+                </div>
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button
+                className="btn-secondary"
+                onClick={() => setShowGitHubConfig(false)}
+              >
+                Annuler
+              </button>
+              <button
+                className="btn-primary"
+                onClick={handleSaveGitHubConfig}
+              >
+                Sauvegarder
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Configuration Info */}
       {!isConfigurationComplete() && (
         <div className="config-warning">
@@ -231,7 +340,6 @@ const AdminDashboard = ({ onLogout }) => {
           <ul>
             <li><strong>owner</strong> : votre nom d'utilisateur GitHub</li>
             <li><strong>repo</strong> : le nom de votre repository</li>
-            <li><strong>token</strong> : votre Personal Access Token GitHub</li>
           </ul>
         </div>
       )}
