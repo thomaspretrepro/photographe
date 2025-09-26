@@ -13,7 +13,8 @@ export const GITHUB_CONFIG = {
   branch: 'main',
   
   // Token GitHub (Personal Access Token)
-  token: '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',
+  // REMPLACEZ CE TOKEN PAR VOTRE NOUVEAU TOKEN VALIDE
+  token: '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',
   
   // Instructions pour la configuration
   instructions: {
@@ -40,7 +41,9 @@ export const GITHUB_CONFIG = {
 export const isConfigurationComplete = () => {
   return GITHUB_CONFIG.owner !== 'VOTRE_USERNAME' &&
          GITHUB_CONFIG.repo !== 'VOTRE_REPO' &&
-         GITHUB_CONFIG.token !== 'VOTRE_TOKEN_GITHUB';
+         GITHUB_CONFIG.token !== 'VOTRE_TOKEN_GITHUB' &&
+         GITHUB_CONFIG.token !== 'VOTRE_NOUVEAU_TOKEN_ICI' &&
+         GITHUB_CONFIG.token.length > 10; // Vérification basique de la longueur du token
 };
 
 // Fonction pour obtenir l'URL du repository
