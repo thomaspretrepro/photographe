@@ -216,6 +216,35 @@
   color: rgba(255, 255, 255, 0.9);
 }
 
+/* Test button styles */
+.test-btn {
+  background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+  color: white;
+}
+
+.test-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #138496 0%, #117a8b 100%);
+  color: white;
+}
+
+.test-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.test-btn .action-icon {
+  color: white;
+}
+
+.test-btn h3 {
+  color: white;
+}
+
+.test-btn p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
 /* Modal styles */
 .modal-overlay {
   position: fixed;

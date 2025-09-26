@@ -777,11 +777,19 @@ export const saveAlbumsData = (albums) => {
 // Helper function to publish albums to GitHub via repository dispatch
 export const publishToGitHub = async (repoOwner, repoName, githubToken) => {
   try {
+    console.log('🔍 Debug GitHub Publication:');
+    console.log('- Repository:', `${repoOwner}/${repoName}`);
+    console.log('- Token length:', githubToken ? githubToken.length : 'undefined');
+    console.log('- Token starts with:', githubToken ? githubToken.substring(0, 4) + '...' : 'undefined');
+    
     const savedAlbums = JSON.parse(localStorage.getItem('albumsData') || '[]');
     const albumsJSContent = generateCompleteAlbumsJS(savedAlbums);
     
+    const url = `https://api.github.com/repos/${repoOwner}/${repoName}/dispatches`;
+    console.log('- API URL:', url);
+    
     // Trigger GitHub Actions workflow via repository dispatch
-    const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/dispatches`, {
+    const response = await fetch(url, {
       method: 'POST',
       headers: {
         'Authorization': `token ${githubToken}`,
@@ -799,22 +807,26 @@ export const publishToGitHub = async (repoOwner, repoName, githubToken) => {
       }),
     });
     
+    console.log('- Response status:', response.status);
+    console.log('- Response headers:', Object.fromEntries(response.headers.entries()));
+    
     if (response.ok) {
-      console.log('Albums published to GitHub successfully');
+      console.log('✅ Albums published to GitHub successfully');
       return {
         success: true,
         message: 'Modifications publiées avec succès ! Le site sera mis à jour dans quelques minutes.'
       };
     } else {
       const errorData = await response.json();
-      console.error('Failed to publish to GitHub:', errorData);
+      console.error('❌ Failed to publish to GitHub:', errorData);
+      console.error('- Full response:', response);
       return {
         success: false,
-        message: `Erreur GitHub: ${errorData.message || 'Erreur inconnue'}`
+        message: `Erreur GitHub: ${errorData.message || 'Erreur inconnue'} (Status: ${response.status})`
       };
     }
   } catch (error) {
-    console.error('Error publishing to GitHub:', error);
+    console.error('💥 Error publishing to GitHub:', error);
     return {
       success: false,
       message: 'Erreur de connexion à GitHub. Vérifiez votre token et votre connexion.'
@@ -824,7 +836,19 @@ export const publishToGitHub = async (repoOwner, repoName, githubToken) => {
 
 // Helper function to save albums data to GitHub (main function)
 export const saveAlbumsToGitHub = async () => {
+  console.log('🚀 Starting GitHub publication...');
+  
+  const config = getGitHubConfig();
+  console.log('📋 Configuration loaded:', {
+    owner: config?.owner,
+    repo: config?.repo,
+    tokenLength: config?.token?.length,
+    branch: config?.branch,
+    isComplete: isConfigurationComplete()
+  });
+  
   if (!isConfigurationComplete()) {
+    console.log('❌ Configuration incomplete');
     return {
       success: false,
       message: 'Configuration GitHub incomplète. Veuillez configurer GitHub dans l\'interface admin.',
@@ -832,6 +856,77 @@ export const saveAlbumsToGitHub = async () => {
     };
   }
   
-  const config = getGitHubConfig();
+  console.log('✅ Configuration complete, proceeding with publication...');
   return await publishToGitHub(config.owner, config.repo, config.token);
+};
+
+// Helper function to test GitHub token validity
+export const testGitHubToken = async () => {
+  const config = getGitHubConfig();
+  if (!config || !config.token) {
+    return {
+      success: false,
+      message: 'Aucun token configuré'
+    };
+  }
+
+  try {
+    console.log('🧪 Testing GitHub token...');
+    
+    // Test with a simple API call to get user info
+    const response = await fetch('https://api.github.com/user', {
+      method: 'GET',
+      headers: {
+        'Authorization': `token ${config.token}`,
+        'Accept': 'application/vnd.github.v3+json',
+      },
+    });
+
+    console.log('- Token test response status:', response.status);
+
+    if (response.ok) {
+      const userData = await response.json();
+      console.log('✅ Token is valid, user:', userData.login);
+      
+      // Test repository access
+      const repoResponse = await fetch(`https://api.github.com/repos/${config.owner}/${config.repo}`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `token ${config.token}`,
+          'Accept': 'application/vnd.github.v3+json',
+        },
+      });
+
+      console.log('- Repository access test status:', repoResponse.status);
+
+      if (repoResponse.ok) {
+        const repoData = await repoResponse.json();
+        console.log('✅ Repository access OK:', repoData.full_name);
+        return {
+          success: true,
+          message: `Token valide pour l'utilisateur ${userData.login}. Accès au repository ${repoData.full_name} confirmé.`
+        };
+      } else {
+        const repoError = await repoResponse.json();
+        console.log('❌ Repository access failed:', repoError);
+        return {
+          success: false,
+          message: `Token valide mais pas d'accès au repository ${config.owner}/${config.repo}: ${repoError.message}`
+        };
+      }
+    } else {
+      const errorData = await response.json();
+      console.log('❌ Token test failed:', errorData);
+      return {
+        success: false,
+        message: `Token invalide: ${errorData.message}`
+      };
+    }
+  } catch (error) {
+    console.error('💥 Error testing token:', error);
+    return {
+      success: false,
+      message: 'Erreur lors du test du token'
+    };
+  }
 };

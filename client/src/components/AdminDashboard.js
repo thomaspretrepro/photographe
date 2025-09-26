@@ -6,7 +6,8 @@ import {
   saveAlbumsToGitHub,
   getGitHubConfig,
   saveGitHubConfig,
-  isConfigurationComplete
+  isConfigurationComplete,
+  testGitHubToken
 } from '../data/albums';
 import './AdminDashboard.css';
 
@@ -19,6 +20,7 @@ const AdminDashboard = ({ onLogout }) => {
   });
   const [notification, setNotification] = useState(null);
   const [isSaving, setIsSaving] = useState(false);
+  const [isTesting, setIsTesting] = useState(false);
   const [showGitHubConfig, setShowGitHubConfig] = useState(false);
   const [gitHubConfig, setGitHubConfig] = useState({
     owner: '',
@@ -95,6 +97,28 @@ const AdminDashboard = ({ onLogout }) => {
         message: 'Erreur lors de la sauvegarde de la configuration'
       });
       setTimeout(() => setNotification(null), 3000);
+    }
+  };
+
+  const handleTestGitHubToken = async () => {
+    setIsTesting(true);
+    setNotification(null);
+    
+    try {
+      const result = await testGitHubToken();
+      
+      setNotification({
+        type: result.success ? 'success' : 'error',
+        message: result.message
+      });
+    } catch (error) {
+      setNotification({
+        type: 'error',
+        message: 'Erreur lors du test du token'
+      });
+    } finally {
+      setIsTesting(false);
+      setTimeout(() => setNotification(null), 5000);
     }
   };
 
@@ -217,6 +241,17 @@ const AdminDashboard = ({ onLogout }) => {
                   }
                 </p>
               </button>
+              {isConfigurationComplete() && (
+                <button
+                  onClick={handleTestGitHubToken}
+                  className="action-card test-btn"
+                  disabled={isTesting}
+                >
+                  <div className="action-icon">{isTesting ? '⏳' : '🧪'}</div>
+                  <h3>{isTesting ? 'Test en cours...' : 'Tester Token'}</h3>
+                  <p>{isTesting ? 'Vérification GitHub...' : 'Vérifier la validité du token GitHub'}</p>
+                </button>
+              )}
             </div>
           </div>
 
