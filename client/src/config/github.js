@@ -14,7 +14,7 @@ export const GITHUB_CONFIG = {
   
   // Token GitHub (Personal Access Token)
   // REMPLACEZ CE TOKEN PAR VOTRE NOUVEAU TOKEN VALIDE
-  token: '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',
+  token: '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',
   
   // Instructions pour la configuration
   instructions: {
