@@ -17,7 +17,10 @@ jobs:
     - name: Update albums.js file
       run: |
         echo "Updating albums.js with new data..."
-        echo '${{ github.event.client_payload.albums_data }}' > client/src/data/albums.js
+        # Create the albums.js file using a here document to avoid quote issues
+        cat > client/src/data/albums.js << 'EOF'
+        ${{ github.event.client_payload.albums_data }}
+        EOF
         
     - name: Commit and push changes
       run: |
@@ -28,7 +31,7 @@ jobs:
           echo "No changes to commit"
         else
           git commit -m "Update albums data from admin interface
-          
+
           - Updated by: ${{ github.event.client_payload.updated_by || 'Admin' }}
           - Timestamp: ${{ github.event.client_payload.timestamp }}
           - Albums count: ${{ github.event.client_payload.albums_count }}"
