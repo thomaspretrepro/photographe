@@ -136,17 +136,17 @@ const Home = () => {
             <div className="about-text-minimal">
               <h2>Capturer l'instant, révéler l'émotion</h2>
               <p>
-                Photographe passionné depuis plus de 10 ans, je transforme chaque moment 
-                en une œuvre d'art visuelle. Mon approche combine technique professionnelle 
+                Photographe passionné depuis plus de 5 ans, je transforme chaque moment 
+                en une œuvre d'art visuelle. Mon approche combine technique  
                 et sensibilité artistique pour créer des images qui racontent votre histoire.
               </p>
               <div className="stats">
                 <div className="stat">
-                  <span className="number">500+</span>
+                  <span className="number">10+</span>
                   <span className="label">Projets réalisés</span>
                 </div>
                 <div className="stat">
-                  <span className="number">10+</span>
+                  <span className="number">5</span>
                   <span className="label">Années d'expérience</span>
                 </div>
                 <div className="stat">

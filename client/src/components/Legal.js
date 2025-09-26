@@ -16,9 +16,9 @@ const Legal = () => {
             <div className="legal-info">
               <p><strong>Nom :</strong> Thomas Prêtre</p>
               <p><strong>Statut :</strong> Photographe professionnel - Auto-entrepreneur</p>
-              <p><strong>SIRET :</strong> [À compléter]</p>
+             /* <p><strong>SIRET :</strong> [À compléter]</p>
               <p><strong>Adresse :</strong> [À compléter]</p>
-              <p><strong>Téléphone :</strong> [À compléter]</p>
+              <p><strong>Téléphone :</strong> [À compléter]</p>*/
               <p><strong>Email :</strong> thomas.pretre.pro@gmail.com</p>
               <p><strong>Directeur de la publication :</strong> Thomas Prêtre</p>
             </div>
@@ -27,9 +27,9 @@ const Legal = () => {
           <section className="legal-section">
             <h2>2. Hébergement</h2>
             <div className="legal-info">
-              <p><strong>Hébergeur :</strong> [À compléter selon l'hébergeur choisi]</p>
-              <p><strong>Adresse :</strong> [À compléter]</p>
-              <p><strong>Téléphone :</strong> [À compléter]</p>
+              <p><strong>Hébergeur :</strong> github.com</p>
+              /*<p><strong>Adresse :</strong> [À compléter]</p>
+              <p><strong>Téléphone :</strong> [À compléter]</p>*/
             </div>
           </section>
 
