@@ -679,8 +679,6 @@ export const downloadAlbumsJS = () => {
   URL.revokeObjectURL(url);
 };
 
-import { GITHUB_CONFIG, isConfigurationComplete } from '../config/github';
-
 // Helper function to get GitHub token (from shared config)
 export const getGitHubToken = () => {
   return GITHUB_CONFIG.token;
