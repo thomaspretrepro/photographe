@@ -12,9 +12,6 @@ export const GITHUB_CONFIG = {
   // Branche principale (généralement 'main' ou 'master')
   branch: 'main',
   
-  // Token GitHub (Personal Access Token)
-  token: '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',
-  
   // Instructions pour la configuration
   instructions: {
     tokenSetup: [
