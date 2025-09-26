@@ -12,6 +12,9 @@ export const GITHUB_CONFIG = {
   // Branche principale (généralement 'main' ou 'master')
   branch: 'main',
   
+  // Token GitHub (Personal Access Token)
+  token: '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',
+  
   // Instructions pour la configuration
   instructions: {
     tokenSetup: [
@@ -36,7 +39,8 @@ export const GITHUB_CONFIG = {
 // Fonction pour vérifier si la configuration est complète
 export const isConfigurationComplete = () => {
   return GITHUB_CONFIG.owner !== 'VOTRE_USERNAME' &&
-         GITHUB_CONFIG.repo !== 'VOTRE_REPO';
+         GITHUB_CONFIG.repo !== 'VOTRE_REPO' &&
+         GITHUB_CONFIG.token !== 'VOTRE_TOKEN_GITHUB';
 };
 
 // Fonction pour obtenir l'URL du repository
