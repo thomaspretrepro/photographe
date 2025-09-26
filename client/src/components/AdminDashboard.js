@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { getGalleryAlbums, initializeAlbumsData, saveAlbumsToServer } from '../data/albums';
+import {
+  getGalleryAlbums,
+  initializeAlbumsData,
+  saveAlbumsToGitHub,
+  setGitHubToken,
+  getGitHubToken,
+  configureGitHub,
+  loadGitHubConfig
+} from '../data/albums';
 import './AdminDashboard.css';
 
 const AdminDashboard = ({ onLogout }) => {
@@ -12,12 +20,27 @@ const AdminDashboard = ({ onLogout }) => {
   });
   const [notification, setNotification] = useState(null);
   const [isSaving, setIsSaving] = useState(false);
+  const [showGitHubConfig, setShowGitHubConfig] = useState(false);
+  const [gitHubConfig, setGitHubConfig] = useState({
+    owner: '',
+    repo: '',
+    token: ''
+  });
   const navigate = useNavigate();
 
   useEffect(() => {
     // Initialize data with all existing photos
     initializeAlbumsData();
     loadData();
+    
+    // Load GitHub configuration
+    const config = loadGitHubConfig();
+    const token = getGitHubToken();
+    setGitHubConfig({
+      owner: config.owner || '',
+      repo: config.repo || '',
+      token: token || ''
+    });
   }, []);
 
   const loadData = () => {
@@ -58,12 +81,12 @@ const AdminDashboard = ({ onLogout }) => {
     }
   };
 
-  const handleSaveToServer = async () => {
+  const handlePublishToGitHub = async () => {
     setIsSaving(true);
     setNotification(null);
     
     try {
-      const result = await saveAlbumsToServer();
+      const result = await saveAlbumsToGitHub();
       
       if (result.success) {
         setNotification({
@@ -71,6 +94,9 @@ const AdminDashboard = ({ onLogout }) => {
           message: result.message
         });
       } else {
+        if (result.requiresToken || result.requiresConfig) {
+          setShowGitHubConfig(true);
+        }
         setNotification({
           type: 'error',
           message: result.message
@@ -79,13 +105,35 @@ const AdminDashboard = ({ onLogout }) => {
     } catch (error) {
       setNotification({
         type: 'error',
-        message: 'Erreur lors de la sauvegarde'
+        message: 'Erreur lors de la publication'
       });
     } finally {
       setIsSaving(false);
       // Auto-hide notification after 5 seconds
       setTimeout(() => setNotification(null), 5000);
     }
+  };
+
+  const handleSaveGitHubConfig = () => {
+    if (gitHubConfig.owner && gitHubConfig.repo) {
+      configureGitHub(gitHubConfig.owner, gitHubConfig.repo);
+    }
+    if (gitHubConfig.token) {
+      setGitHubToken(gitHubConfig.token);
+    }
+    setShowGitHubConfig(false);
+    setNotification({
+      type: 'success',
+      message: 'Configuration GitHub sauvegardée !'
+    });
+    setTimeout(() => setNotification(null), 3000);
+  };
+
+  const handleConfigChange = (field, value) => {
+    setGitHubConfig(prev => ({
+      ...prev,
+      [field]: value
+    }));
   };
 
   return (
@@ -155,13 +203,21 @@ const AdminDashboard = ({ onLogout }) => {
                 <p>Modifier ou supprimer des albums</p>
               </Link>
               <button
-                onClick={handleSaveToServer}
+                onClick={handlePublishToGitHub}
                 className="action-card export-btn"
                 disabled={isSaving}
               >
-                <div className="action-icon">{isSaving ? '⏳' : '💾'}</div>
-                <h3>{isSaving ? 'Sauvegarde...' : 'Sauvegarder'}</h3>
-                <p>{isSaving ? 'Écriture sur le serveur...' : 'Écrire les modifications sur albums.js'}</p>
+                <div className="action-icon">{isSaving ? '⏳' : '🚀'}</div>
+                <h3>{isSaving ? 'Publication...' : 'Publier'}</h3>
+                <p>{isSaving ? 'Mise à jour GitHub Pages...' : 'Publier sur GitHub Pages'}</p>
+              </button>
+              <button
+                onClick={() => setShowGitHubConfig(true)}
+                className="action-card config-btn"
+              >
+                <div className="action-icon">⚙️</div>
+                <h3>Configuration</h3>
+                <p>Configurer GitHub</p>
               </button>
             </div>
           </div>
@@ -203,6 +259,88 @@ const AdminDashboard = ({ onLogout }) => {
           </div>
         </div>
       </div>
+
+      {/* GitHub Configuration Modal */}
+      {showGitHubConfig && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h2>Configuration GitHub</h2>
+              <button
+                className="modal-close"
+                onClick={() => setShowGitHubConfig(false)}
+              >
+                ×
+              </button>
+            </div>
+            <div className="modal-body">
+              <div className="config-section">
+                <h3>Repository GitHub</h3>
+                <div className="form-group">
+                  <label>Nom d'utilisateur/Organisation :</label>
+                  <input
+                    type="text"
+                    value={gitHubConfig.owner}
+                    onChange={(e) => handleConfigChange('owner', e.target.value)}
+                    placeholder="ex: monusername"
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Nom du repository :</label>
+                  <input
+                    type="text"
+                    value={gitHubConfig.repo}
+                    onChange={(e) => handleConfigChange('repo', e.target.value)}
+                    placeholder="ex: mon-portfolio"
+                  />
+                </div>
+              </div>
+              
+              <div className="config-section">
+                <h3>Token d'accès GitHub</h3>
+                <div className="form-group">
+                  <label>Personal Access Token :</label>
+                  <input
+                    type="password"
+                    value={gitHubConfig.token}
+                    onChange={(e) => handleConfigChange('token', e.target.value)}
+                    placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
+                  />
+                  <small>
+                    Créez un token sur GitHub : Settings → Developer settings → Personal access tokens → Tokens (classic)
+                    <br />
+                    Permissions requises : <code>repo</code> et <code>workflow</code>
+                  </small>
+                </div>
+              </div>
+              
+              <div className="config-section">
+                <h3>Instructions</h3>
+                <ol>
+                  <li>Créez un Personal Access Token sur GitHub</li>
+                  <li>Ajoutez le workflow GitHub Actions à votre repository</li>
+                  <li>Configurez GitHub Pages dans les settings du repository</li>
+                  <li>Testez la publication</li>
+                </ol>
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button
+                className="btn-secondary"
+                onClick={() => setShowGitHubConfig(false)}
+              >
+                Annuler
+              </button>
+              <button
+                className="btn-primary"
+                onClick={handleSaveGitHubConfig}
+              >
+                Sauvegarder
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
