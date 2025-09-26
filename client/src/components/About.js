@@ -22,14 +22,14 @@ const About = () => {
               <h2>Thomas Prêtre</h2>
               <h3>Photographe Passionné</h3>
               <p>
-                Bonjour ! Je suis Thomas, photographe basé en Oise. 
-                Depuis quelques années, je capture les émotions et les instants précieux 
+                Bonjour ! Je suis Thomas, photographe professionnel basé en France. 
+                Depuis plus de 10 ans, je capture les émotions et les instants précieux 
                 à travers mon objectif. Ma passion pour la photographie a commencé très tôt, 
                 et elle ne cesse de grandir chaque jour.
               </p>
               <p>
                 Chaque image que je crée raconte une histoire unique. Que ce soit un portrait 
-                intime, un paysage grandiose ou un concert je m'efforce de 
+                intime, un paysage grandiose ou un moment de célébration, je m'efforce de 
                 révéler la beauté et l'authenticité de chaque sujet.
               </p>
             </div>
