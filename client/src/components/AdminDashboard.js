@@ -4,9 +4,10 @@ import {
   getGalleryAlbums,
   initializeAlbumsData,
   saveAlbumsToGitHub,
-  getGitHubConfig
+  getGitHubConfig,
+  saveGitHubConfig,
+  isConfigurationComplete
 } from '../data/albums';
-import { GITHUB_CONFIG, isConfigurationComplete } from '../config/github';
 import './AdminDashboard.css';
 
 const AdminDashboard = ({ onLogout }) => {
@@ -18,13 +19,28 @@ const AdminDashboard = ({ onLogout }) => {
   });
   const [notification, setNotification] = useState(null);
   const [isSaving, setIsSaving] = useState(false);
+  const [showGitHubConfig, setShowGitHubConfig] = useState(false);
+  const [gitHubConfig, setGitHubConfig] = useState({
+    owner: '',
+    repo: '',
+    token: '',
+    branch: 'main'
+  });
   const navigate = useNavigate();
 
   useEffect(() => {
     // Initialize data with all existing photos
     initializeAlbumsData();
     loadData();
+    loadGitHubConfig();
   }, []);
+
+  const loadGitHubConfig = () => {
+    const config = getGitHubConfig();
+    if (config) {
+      setGitHubConfig(config);
+    }
+  };
 
   const loadData = () => {
     // Load albums from localStorage (now guaranteed to have all photos)
@@ -61,6 +77,24 @@ const AdminDashboard = ({ onLogout }) => {
       localStorage.setItem('albumsData', JSON.stringify(updatedAlbums));
       // Refresh the display
       loadData();
+    }
+  };
+
+  const handleSaveGitHubConfig = () => {
+    try {
+      saveGitHubConfig(gitHubConfig.owner, gitHubConfig.repo, gitHubConfig.token, gitHubConfig.branch);
+      setShowGitHubConfig(false);
+      setNotification({
+        type: 'success',
+        message: 'Configuration GitHub sauvegardée avec succès'
+      });
+      setTimeout(() => setNotification(null), 3000);
+    } catch (error) {
+      setNotification({
+        type: 'error',
+        message: 'Erreur lors de la sauvegarde de la configuration'
+      });
+      setTimeout(() => setNotification(null), 3000);
     }
   };
 
@@ -170,16 +204,19 @@ const AdminDashboard = ({ onLogout }) => {
                 <h3>{isSaving ? 'Publication...' : 'Publier'}</h3>
                 <p>{isSaving ? 'Mise à jour GitHub Pages...' : 'Publier sur GitHub Pages'}</p>
               </button>
-              <div className="action-card info-card">
-                <div className="action-icon">ℹ️</div>
-                <h3>Configuration</h3>
+              <button
+                onClick={() => setShowGitHubConfig(true)}
+                className="action-card config-btn"
+              >
+                <div className="action-icon">⚙️</div>
+                <h3>Configuration GitHub</h3>
                 <p>
                   {isConfigurationComplete()
                     ? '✅ Configuration complète'
-                    : '⚠️ Configuration requise dans le code'
+                    : '⚠️ Configuration GitHub requise'
                   }
                 </p>
-              </div>
+              </button>
             </div>
           </div>
 
@@ -220,6 +257,85 @@ const AdminDashboard = ({ onLogout }) => {
           </div>
         </div>
       </div>
+
+      {/* GitHub Configuration Modal */}
+      {showGitHubConfig && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h2>Configuration GitHub</h2>
+              <button
+                onClick={() => setShowGitHubConfig(false)}
+                className="close-btn"
+              >
+                ×
+              </button>
+            </div>
+            <div className="modal-body">
+              <p className="config-info">
+                Configurez votre repository GitHub pour la publication automatique.
+              </p>
+              <div className="form-group">
+                <label htmlFor="owner">Propriétaire du repository :</label>
+                <input
+                  type="text"
+                  id="owner"
+                  value={gitHubConfig.owner}
+                  onChange={(e) => setGitHubConfig({...gitHubConfig, owner: e.target.value})}
+                  placeholder="ex: votre-username"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="repo">Nom du repository :</label>
+                <input
+                  type="text"
+                  id="repo"
+                  value={gitHubConfig.repo}
+                  onChange={(e) => setGitHubConfig({...gitHubConfig, repo: e.target.value})}
+                  placeholder="ex: mon-portfolio"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="token">Token GitHub (Personal Access Token) :</label>
+                <input
+                  type="password"
+                  id="token"
+                  value={gitHubConfig.token}
+                  onChange={(e) => setGitHubConfig({...gitHubConfig, token: e.target.value})}
+                  placeholder="ghp_..."
+                />
+                <small className="help-text">
+                  Créez un token avec les permissions 'repo' et 'workflow' dans GitHub → Settings → Developer settings
+                </small>
+              </div>
+              <div className="form-group">
+                <label htmlFor="branch">Branche :</label>
+                <input
+                  type="text"
+                  id="branch"
+                  value={gitHubConfig.branch}
+                  onChange={(e) => setGitHubConfig({...gitHubConfig, branch: e.target.value})}
+                  placeholder="main"
+                />
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button
+                onClick={() => setShowGitHubConfig(false)}
+                className="btn-secondary"
+              >
+                Annuler
+              </button>
+              <button
+                onClick={handleSaveGitHubConfig}
+                className="btn-primary"
+              >
+                Sauvegarder
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
   );

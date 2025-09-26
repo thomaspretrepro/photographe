@@ -1,5 +1,3 @@
-import { GITHUB_CONFIG, isConfigurationComplete } from '../config/github.js';
-
 export const albumsData = [
   {
     "id": "portraits-claire-cerceaux",
@@ -681,14 +679,23 @@ export const downloadAlbumsJS = () => {
   URL.revokeObjectURL(url);
 };
 
-// Helper function to get GitHub token (from shared config)
-export const getGitHubToken = () => {
-  return GITHUB_CONFIG.token;
+// Helper function to get GitHub configuration from localStorage
+export const getGitHubConfig = () => {
+  const config = localStorage.getItem('githubConfig');
+  return config ? JSON.parse(config) : null;
 };
 
-// Helper function to get complete configuration
-export const getCompleteConfig = () => {
-  return GITHUB_CONFIG;
+// Helper function to save GitHub configuration to localStorage
+export const saveGitHubConfig = (owner, repo, token, branch = 'main') => {
+  const config = { owner, repo, token, branch };
+  localStorage.setItem('githubConfig', JSON.stringify(config));
+  return config;
+};
+
+// Helper function to check if GitHub configuration is complete
+export const isConfigurationComplete = () => {
+  const config = getGitHubConfig();
+  return config && config.owner && config.repo && config.token && config.token.length > 10;
 };
 
 // Helper function to generate complete albums.js file content
@@ -820,19 +827,11 @@ export const saveAlbumsToGitHub = async () => {
   if (!isConfigurationComplete()) {
     return {
       success: false,
-      message: 'Configuration GitHub incomplète. Veuillez vérifier le fichier de configuration.',
+      message: 'Configuration GitHub incomplète. Veuillez configurer GitHub dans l\'interface admin.',
       requiresConfig: true
     };
   }
   
-  return await publishToGitHub(GITHUB_CONFIG.owner, GITHUB_CONFIG.repo, GITHUB_CONFIG.token);
-};
-
-// Helper function to get GitHub configuration (read-only)
-export const getGitHubConfig = () => {
-  return {
-    owner: GITHUB_CONFIG.owner,
-    repo: GITHUB_CONFIG.repo,
-    branch: GITHUB_CONFIG.branch
-  };
+  const config = getGitHubConfig();
+  return await publishToGitHub(config.owner, config.repo, config.token);
 };
