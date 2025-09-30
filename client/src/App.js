@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 
 // Components
@@ -55,7 +55,7 @@ function App() {
           <nav className="navbar">
             <div className="nav-brand">
               {/* <Link to="/photographe" onClick={closeMenu}>Thomas Prêtre</Link> */}
-              <Link to="/" onClick={closeMenu}>Thomas Prêtre</Link>
+              <a href="index.html" onClick={closeMenu}>Thomas Prêtre</a>
             </div>
             <button
               className="hamburger-menu"
@@ -69,10 +69,10 @@ function App() {
             </button>
             <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
               {/* <li><Link to="/photographe" onClick={closeMenu}>Accueil</Link></li> */}
-              <li><Link to="/" onClick={closeMenu}>Accueil</Link></li>
-              <li><Link to="/gallery" onClick={closeMenu}>Galerie</Link></li>
-              <li><Link to="/about" onClick={closeMenu}>À propos</Link></li>
-              <li><Link to="/contact" onClick={closeMenu}>Contact</Link></li>
+              <li><a href="index.html" onClick={closeMenu}>Accueil</a></li>
+              <li><a href="gallery.html" onClick={closeMenu}>Galerie</a></li>
+              <li><a href="about.html" onClick={closeMenu}>À propos</a></li>
+              <li><a href="contact.html" onClick={closeMenu}>Contact</a></li>
             </ul>
           </nav>
         </header>
@@ -144,8 +144,8 @@ function App() {
           <div className="footer-content">
             <p>&copy; 2025 Thomas Prêtre Photography. Tous droits réservés.</p>
             <div className="footer-links">
-              <Link to="/legal">Mentions légales</Link>
-              <Link to="/admin" className="admin-link">Administration</Link>
+              <a href="legal.html">Mentions légales</a>
+              <a href="admin.html" className="admin-link">Administration</a>
             </div>
           </div>
         </footer>

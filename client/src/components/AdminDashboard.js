@@ -126,7 +126,7 @@ const AdminDashboard = ({ onLogout }) => {
                     <p className="album-sort-order">Ordre: {album.sortOrder || 0}</p>
                   </div>
                   <div className="album-actions">
-                    <Link to={`/album/${album.id}`} className="view-btn">
+                    <Link to={`/gallery/${album.id}`} className="view-btn">
                       Voir
                     </Link>
                     <span className="edit-note">

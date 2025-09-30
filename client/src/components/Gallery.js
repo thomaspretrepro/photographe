@@ -61,7 +61,7 @@ const Gallery = () => {
         {/* Albums Grid */}
         <div className="albums-grid">
           {filteredAlbums.map(album => (
-            <Link to={`/album/${album.id}`} key={album.id} className="album-card">
+            <Link to={`/gallery/${album.id}`} key={album.id} className="album-card">
               <div className="album-image">
                 <img src={album.coverImage} alt={album.title} />
                 <div className="album-overlay">
