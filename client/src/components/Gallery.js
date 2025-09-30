@@ -1,48 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getGalleryAlbums } from '../data/albums';
+import { getGalleryAlbums, getAllCategories } from '../data/albums';
 import './Gallery.css';
 
 const Gallery = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [categories, setCategories] = useState([]);
 
-  // Get albums data from shared source
+  // Get albums data
   const albums = getGalleryAlbums();
 
-  // Function to get dynamic categories from existing albums
-  const getDynamicCategories = () => {
-    const savedAlbums = JSON.parse(localStorage.getItem('albumsData') || '[]');
-    const existingCategories = [...new Set(savedAlbums.map(album => album.category))];
-    
-    // Default category labels mapping
+  // Setup categories on component mount
+  useEffect(() => {
     const categoryLabels = {
       'portrait': 'Portraits',
-      'landscape': 'Paysages',
+      'landscape': 'Paysages', 
       'concerts': 'Concerts',
       'essais': 'Essais',
       'event': 'Événements'
     };
-    
-    // Start with "All" category
+
     const dynamicCategories = [{ key: 'all', label: 'Tous les Albums' }];
     
-    // Add existing categories with proper labels
-    existingCategories.forEach(category => {
+    getAllCategories().forEach(category => {
       if (category) {
         const label = categoryLabels[category] || category.charAt(0).toUpperCase() + category.slice(1);
         dynamicCategories.push({ key: category, label });
       }
     });
     
-    return dynamicCategories;
-  };
+    setCategories(dynamicCategories);
+  }, []);
 
-  // Update categories when component mounts or albums change
-  useEffect(() => {
-    setCategories(getDynamicCategories());
-  }, [albums]);
-
+  // Filter albums based on selected category
   const filteredAlbums = selectedCategory === 'all'
     ? albums
     : albums.filter(album => album.category === selectedCategory);
@@ -68,23 +58,33 @@ const Gallery = () => {
           ))}
         </div>
 
-        {/* Grille d'albums */}
-        <div className="gallery-grid">
+        {/* Albums Grid */}
+        <div className="albums-grid">
           {filteredAlbums.map(album => (
-            <Link
-              key={album.id}
-              to={`/gallery/${album.id}`}
-              className="gallery-item album-card"
-            >
-              <img src={album.coverImage} alt={album.title} />
-              <div className="gallery-overlay">
-                <h3>{album.title}</h3>
+            <Link to={`/album/${album.id}`} key={album.id} className="album-card">
+              <div className="album-image">
+                <img src={album.coverImage} alt={album.title} />
+                <div className="album-overlay">
+                  <div className="album-info">
+                    <h3>{album.title}</h3>
+                    <p>{album.photoCount} photos</p>
+                  </div>
+                </div>
+              </div>
+              <div className="album-details">
+                <h4>{album.title}</h4>
                 <p>{album.description}</p>
-                <span className="photo-count">{album.photoCount} photos</span>
+                <span className="album-category">{album.category}</span>
               </div>
             </Link>
           ))}
         </div>
+
+        {filteredAlbums.length === 0 && (
+          <div className="no-albums">
+            <p>Aucun album trouvé pour cette catégorie.</p>
+          </div>
+        )}
       </div>
     </div>
   );
