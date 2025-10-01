@@ -42,7 +42,7 @@ const AlbumForm = () => {
     return allCategories;
   };
 
-  const [categories, setCategories] = useState(getExistingCategories());
+  const [categories] = useState(getExistingCategories());
 
   useEffect(() => {
     if (albumId && albumId !== 'new') {

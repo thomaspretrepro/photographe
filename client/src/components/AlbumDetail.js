@@ -52,7 +52,7 @@ const AlbumDetail = () => {
 
     document.addEventListener('keydown', handleKeyPress);
     return () => document.removeEventListener('keydown', handleKeyPress);
-  }, [lightboxImage, currentImageIndex, album]);
+  }, [lightboxImage, currentImageIndex, album, nextImage, prevImage]);
 
   if (!album) {
     return (

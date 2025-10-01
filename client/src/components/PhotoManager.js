@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getAlbumById } from '../data/albums';
 import './PhotoManager.css';
 
 const PhotoManager = () => {
@@ -17,7 +16,7 @@ const PhotoManager = () => {
 
   useEffect(() => {
     loadAlbum();
-  }, [albumId]);
+  }, [albumId, loadAlbum]);
 
   const loadAlbum = () => {
     const savedAlbums = JSON.parse(localStorage.getItem('albumsData') || '[]');
@@ -96,14 +95,6 @@ const PhotoManager = () => {
     }));
   };
 
-  const isValidUrl = (string) => {
-    try {
-      new URL(string);
-      return true;
-    } catch (_) {
-      return false;
-    }
-  };
 
   if (!album) {
     return (
