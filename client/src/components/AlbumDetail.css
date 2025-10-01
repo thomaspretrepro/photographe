@@ -31,9 +31,9 @@
 
 .album-category {
   display: inline-block;
-  background: #007bff;
+  background: #a9a9a9;
   color: white;
-  padding: 0.5rem 1rem;
+padding: 0.1rem 0.8rem;
   border-radius: 20px;
   font-size: 0.9rem;
   font-weight: 500;
@@ -51,7 +51,7 @@
 
 .album-info p {
   font-size: 1.2rem;
-  color: #666;
+  color: #bbb;
   max-width: 600px;
   margin: 0 auto 2rem;
   line-height: 1.6;

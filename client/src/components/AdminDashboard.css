@@ -475,12 +475,12 @@
 
 .album-info h3 {
   margin: 0 0 0.5rem 0;
-  color: #333;
+  color: #fff;
   font-size: 1.1rem;
 }
 
 .album-category {
-  color: #007bff;
+  color: #fff;
   font-size: 0.9rem;
   margin: 0 0 0.25rem 0;
   text-transform: capitalize;
