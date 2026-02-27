@@ -1,0 +1,37 @@
+/* Layout Styles */
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 80px; /* Espace pour le header fixe */
+}
+
+/* Layout spécial pour la page d'accueil */
+.layout.home-layout .main-content.home-main {
+  padding-top: 0; /* Pas de padding pour le hero slider */
+}
+
+/* Classe ajoutée au body pour gérer le header fixe */
+body.has-fixed-header {
+  padding-top: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .main-content {
+    padding-top: 70px; /* Header plus petit sur mobile */
+  }
+  
+  .layout.home-layout .main-content.home-main {
+    padding-top: 0; /* Toujours pas de padding sur mobile pour le hero */
+  }
+}
+
+/* Smooth scroll pour les ancres */
+html {
+  scroll-behavior: smooth;
+}

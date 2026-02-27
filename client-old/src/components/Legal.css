@@ -1,0 +1,254 @@
+/* Legal Component Styles */
+.legal {
+  padding: 4rem 0;
+  min-height: 80vh;
+  background-color: #f8f9fa;
+}
+
+.legal-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.legal-header h1 {
+  font-size: 3rem;
+  color: #333;
+  margin-bottom: 1rem;
+  font-weight: 300;
+}
+
+.legal-header p {
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.legal-content {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  padding: 3rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.legal-section {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.legal-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.legal-section h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #007bff;
+  display: inline-block;
+}
+
+.legal-section h3 {
+  font-size: 1.4rem;
+  color: #333;
+  margin: 2rem 0 1rem 0;
+  font-weight: 500;
+}
+
+.legal-section p {
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+.legal-section ul {
+  color: #666;
+  line-height: 1.8;
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+.legal-section ul li {
+  margin-bottom: 0.5rem;
+}
+
+.legal-info {
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #007bff;
+}
+
+.legal-info p {
+  margin-bottom: 0.5rem;
+}
+
+.legal-info p:last-child {
+  margin-bottom: 0;
+}
+
+.legal-info strong {
+  color: #333;
+  font-weight: 600;
+}
+
+.legal-footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.legal-footer p {
+  color: #999;
+  font-style: italic;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .legal {
+    padding: 3rem 0;
+  }
+
+  .legal-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .legal-header p {
+    font-size: 1.1rem;
+  }
+
+  .legal-content {
+    padding: 2rem;
+    margin: 0 1rem;
+  }
+
+  .legal-section h2 {
+    font-size: 1.6rem;
+  }
+
+  .legal-section h3 {
+    font-size: 1.3rem;
+  }
+
+  .legal-section p {
+    text-align: left;
+  }
+
+  .legal-info {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .legal-header h1 {
+    font-size: 2rem;
+  }
+
+  .legal-content {
+    padding: 1.5rem;
+    margin: 0 0.5rem;
+  }
+
+  .legal-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .legal-section h2 {
+    font-size: 1.4rem;
+  }
+
+  .legal-section h3 {
+    font-size: 1.2rem;
+  }
+
+  .legal-section p {
+    font-size: 0.95rem;
+  }
+
+  .legal-section ul {
+    padding-left: 1.5rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .legal {
+    background-color: white;
+    padding: 0;
+  }
+
+  .legal-content {
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .legal-section {
+    page-break-inside: avoid;
+  }
+
+  .legal-section h2 {
+    color: black;
+    border-bottom-color: black;
+  }
+
+  .legal-info {
+    background-color: #f5f5f5;
+    border-left-color: black;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.legal-section {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.legal-section:nth-child(1) { animation-delay: 0.1s; }
+.legal-section:nth-child(2) { animation-delay: 0.2s; }
+.legal-section:nth-child(3) { animation-delay: 0.3s; }
+.legal-section:nth-child(4) { animation-delay: 0.4s; }
+.legal-section:nth-child(5) { animation-delay: 0.5s; }
+
+/* Accessibility */
+.legal-section h2:focus,
+.legal-section h3:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Link styles within legal content */
+.legal-section a {
+  color: #007bff;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.legal-section a:hover {
+  color: #0056b3;
+}
+
+.legal-section a:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
