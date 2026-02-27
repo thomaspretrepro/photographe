@@ -65,10 +65,10 @@ try {
     console.log('   ⚠️  Configuration Vercel Functions manquante');
   }
   
-  if (vercelConfig.routes) {
-    console.log('   ✅ Routes Vercel configurées');
+  if (vercelConfig.routes || vercelConfig.rewrites) {
+    console.log('   ✅ Routes/Rewrites Vercel configurées');
   } else {
-    console.log('   ⚠️  Routes Vercel manquantes');
+    console.log('   ⚠️  Routes/Rewrites Vercel manquantes');
   }
 } catch (error) {
   console.log(`   ❌ Erreur de lecture vercel.json: ${error.message}`);
