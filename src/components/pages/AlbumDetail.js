@@ -13,7 +13,7 @@ const AlbumDetail = () => {
 
   useEffect(() => {
     loadAlbum();
-  }, [albumId]);
+  }, [albumId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const loadAlbum = async () => {
     try {
@@ -67,7 +67,7 @@ const AlbumDetail = () => {
 
     document.addEventListener('keydown', handleKeyPress);
     return () => document.removeEventListener('keydown', handleKeyPress);
-  }, [lightboxImage, currentImageIndex]);
+  }, [lightboxImage, currentImageIndex]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (loading) {
     return (

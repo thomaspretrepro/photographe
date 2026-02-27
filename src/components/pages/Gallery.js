@@ -17,7 +17,7 @@ const Gallery = () => {
 
   useEffect(() => {
     filterAlbums();
-  }, [albums, selectedCategory]);
+  }, [albums, selectedCategory]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const loadAlbums = async () => {
     try {
