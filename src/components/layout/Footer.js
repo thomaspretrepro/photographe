@@ -30,11 +30,11 @@ const Footer = () => {
               <div className="footer-section">
                 <h4>Contact</h4>
                 <ul>
-                  <li>
+                  {/* <li>
                     <a href={`mailto:${APP_CONFIG.email}`}>
                       {APP_CONFIG.email}
                     </a>
-                  </li>
+                  </li> */}
                   <li>
                     <a 
                       href={APP_CONFIG.instagram} 

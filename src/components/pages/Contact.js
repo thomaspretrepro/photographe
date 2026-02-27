@@ -57,12 +57,12 @@ const Contact = () => {
             </p>
             
             <div className="contact-details">
-              <div className="contact-item">
+              {/* <div className="contact-item">
                 <h3>Email</h3>
                 <a href={`mailto:${APP_CONFIG.email}`}>
                   {APP_CONFIG.email}
                 </a>
-              </div>
+              </div> */}
               
               <div className="contact-item">
                 <h3>Instagram</h3>
