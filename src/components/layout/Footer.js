@@ -57,12 +57,6 @@ const Footer = () => {
                 Tous droits réservés.
               </p>
             </div>
-            
-            <div className="footer-admin">
-              <Link to="/admin" className="admin-link">
-                Administration
-              </Link>
-            </div>
           </div>
         </div>
       </div>
