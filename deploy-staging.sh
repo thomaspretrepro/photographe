@@ -33,7 +33,7 @@ if ! git diff-index --quiet HEAD --; then
     if [ -n "$1" ]; then
         echo -e "${BLUE}📝 Commit automatique avec le message: $1${NC}"
         git add .
-        git commit -m "$1"
+        git commit --no-gpg-sign -m "$1"
     else
         echo -e "${RED}❌ Veuillez commiter vos changements ou fournir un message de commit${NC}"
         echo "Usage: ./deploy-staging.sh \"votre message de commit\""
