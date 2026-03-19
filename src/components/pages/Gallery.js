@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { albumsAPI } from '../../services/api';
+import { getGalleryAlbums, getAllCategories } from '../../data/albums';
 import { ALBUM_CATEGORIES } from '../../utils/constants';
 import './Gallery.css';
 
@@ -9,7 +9,6 @@ const Gallery = () => {
   const [filteredAlbums, setFilteredAlbums] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     loadAlbums();
@@ -19,13 +18,13 @@ const Gallery = () => {
     filterAlbums();
   }, [albums, selectedCategory]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const loadAlbums = async () => {
+  const loadAlbums = () => {
     try {
       setLoading(true);
-      const response = await albumsAPI.getAll();
-      setAlbums(response.data.albums || []);
+      // Utilisation des données locales
+      const albumsData = getGalleryAlbums();
+      setAlbums(albumsData);
     } catch (err) {
-      setError('Erreur lors du chargement des albums');
       console.error('Error loading albums:', err);
     } finally {
       setLoading(false);
@@ -44,6 +43,9 @@ const Gallery = () => {
     setSelectedCategory(category);
   };
 
+  // Obtenir les catégories dynamiquement depuis les données
+  const availableCategories = getAllCategories();
+
   if (loading) {
     return (
       <div className="gallery">
@@ -51,21 +53,6 @@ const Gallery = () => {
           <div className="loading">
             <div className="spinner"></div>
             <p>Chargement des albums...</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="gallery">
-        <div className="container">
-          <div className="error">
-            <p>{error}</p>
-            <button onClick={loadAlbums} className="btn">
-              Réessayer
-            </button>
           </div>
         </div>
       </div>
@@ -89,13 +76,13 @@ const Gallery = () => {
           >
             Tous les Albums
           </button>
-          {Object.entries(ALBUM_CATEGORIES).map(([key, label]) => (
+          {availableCategories.map(category => (
             <button
-              key={key}
-              className={`filter-btn ${selectedCategory === key ? 'active' : ''}`}
-              onClick={() => handleCategoryChange(key)}
+              key={category}
+              className={`filter-btn ${selectedCategory === category ? 'active' : ''}`}
+              onClick={() => handleCategoryChange(category)}
             >
-              {label}
+              {ALBUM_CATEGORIES[category] || category}
             </button>
           ))}
         </div>
@@ -114,7 +101,7 @@ const Gallery = () => {
                   <div className="album-overlay">
                     <div className="album-info">
                       <h3>{album.title}</h3>
-                      <p>{album.photos?.length || 0} photos</p>
+                      <p>{album.photoCount || 0} photos</p>
                     </div>
                   </div>
                 </div>

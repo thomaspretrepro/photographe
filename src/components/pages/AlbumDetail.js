@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { albumsAPI } from '../../services/api';
+import { getAlbumById } from '../../data/albums';
 import './AlbumDetail.css';
 
 const AlbumDetail = () => {
@@ -15,13 +15,18 @@ const AlbumDetail = () => {
     loadAlbum();
   }, [albumId]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const loadAlbum = async () => {
+  const loadAlbum = () => {
     try {
       setLoading(true);
-      const response = await albumsAPI.getById(albumId);
-      setAlbum(response.data);
+      // Utilisation des données locales
+      const albumData = getAlbumById(albumId);
+      if (albumData) {
+        setAlbum(albumData);
+      } else {
+        setError('Album non trouvé');
+      }
     } catch (err) {
-      setError('Album non trouvé');
+      setError('Erreur lors du chargement de l\'album');
       console.error('Error loading album:', err);
     } finally {
       setLoading(false);
