@@ -54,7 +54,7 @@ const Footer = () => {
             <div className="footer-copyright">
               <p>
                 &copy; {currentYear} {APP_CONFIG.photographer}. 
-                Tous droits réservés.
+                Tous droits réservés
               </p>
             </div>
           </div>
