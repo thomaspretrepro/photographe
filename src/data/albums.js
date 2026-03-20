@@ -3,7 +3,7 @@ export const albumsData = [
     "id": "portraits-claire-cerceaux",
     "title": "Claire, ballet du cercle et de l'eau",
     "description": "La danse du corps et du cercle, suspendue entre eau et lumière.",
-    "category": "portraits",
+    "category": "portrait",
     "coverImage": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756200568/_MG_5517_1_nc7iy7.jpg",
     "photos": [
       {
