@@ -73,7 +73,7 @@
 
 .slide-info {
   position: absolute;
-  bottom: 4rem;
+  bottom: 3rem;
   left: 4rem;
   text-align: left;
 }
@@ -312,5 +312,40 @@
 
   .cta-content h2 {
     font-size: 2rem;
+  }
+
+  .slide-info {
+  left: 1rem;
+  bottom: 4rem;
+  }
+  .slide-info h3{
+    font-size: 1rem;
+
+  }
+
+  .slide-info p {
+    font-size: 0.7rem;
+  }
+
+  .view-project-btn {
+    padding: 0.4rem 1rem;
+    font-size: 0.6rem;
+
+  }
+
+  .slider-nav {
+    right: unset;
+            bottom: 1rem;
+  }
+
+  .hero-slider {
+
+    height: 400px;
+  }
+
+  .nav-btn {
+    width: 25px;
+    height: 25px;
+    font-size: 1rem;
   }
 }

@@ -67,133 +67,136 @@ export const albumsData = [
     "updatedAt": "2025-01-26T10:00:00.000Z"
   },
   {
-    id: 'portraits-clara',
-    title: 'Clara, rêverie au jardin du château',
-    description: 'Sous les pierres anciennes, la lumière caresse la douceur d’un instant suspendu.',
-    category: 'portrait',
-    coverImage: 'https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288469/_MG_4694_suin7j.jpg',
-    photoCount: 9,
-    photos: [
+    "id": "portraits-clara",
+    "title": "Clara, rêverie au jardin du château",
+    "description": "Sous les pierres anciennes, la lumière caresse la douceur d’un instant suspendu.",
+    "category": "portrait",
+    "coverImage": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288469/_MG_4694_suin7j.jpg",
+    "photoCount": 9,
+    "photos": [
       {
-        id: 1,
-        src: 'https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288469/_MG_4694_suin7j.jpg',
-        title: '',
-        description: ''
+        "id": 1,
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288469/_MG_4694_suin7j.jpg",
+        "title": "",
+        "description": ""
       },
       {
-        id: 2,
-        src: 'https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288472/_MG_4716_uxutjq.jpg',
-        title: '',
-        description: ''
+        "id": 2,
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288472/_MG_4716_uxutjq.jpg",
+        "title": "",
+        "description": "" 
       },
       {
-        id: 3,
-        src: 'https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288472/_MG_4834_m6ihx7.jpg',
-        title: '',
-        description: ''
+        "id": 3,
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288472/_MG_4834_m6ihx7.jpg",
+        "title": "",
+        "description": ""
       },
       {
-        id: 4,
-        src: 'https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288472/_MG_4701_cisdml.jpg',
-        title: '',
-        description: ''
+        "id": 4,
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288472/_MG_4701_cisdml.jpg",
+        "title": "",
+        "description": ""
       },
       {
-        id: 5,
-        src: 'https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288468/_MG_4616_wuxp9w.jpg',
-        title: '',
-        description: ''
+        "id": 5,
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288468/_MG_4616_wuxp9w.jpg",
+        "title": "",
+        "description": ""
       },
       {
-        id: 6,
-        src: 'https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288468/_MG_4599-2_uapyo4.jpg',
-        title: '',
-        description: ''
+        "id": 6,
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288468/_MG_4599-2_uapyo4.jpg",
+        "title": "",
+        "description": ""
       },
       {
-        id: 7,
-        src: 'https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288474/_MG_4880_xjyahh.jpg',
-        title: '',
-        description: ''
+        "id": 7,
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288474/_MG_4880_xjyahh.jpg",
+        "title": "",
+        "description": ""
       },
       {
-        id: 8,
-        src: 'https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288472/_MG_4803_kz1yv7.jpg',
-        title: '',
-        description: ''
+        "id": 8,
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288472/_MG_4803_kz1yv7.jpg",
+        "title": "",
+        "description": ""
       },
       {
-        id: 9,
-        src: 'https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288474/_MG_4890-4_kkavwf.jpg',
-        title: '',
-        description: ''
+        "id": 9,
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288474/_MG_4890-4_kkavwf.jpg",
+        "title": "",
+        "description": ""
       }
-    ]
+    ],
+    "createdAt": "2025-01-26T10:00:00.000Z",
+    "updatedAt": "2025-01-26T10:00:00.000Z"
   },
   {
-    id: 'portraits-claire-chantilly',
-    title: 'Claire, Hiver au jardin',
-    description: 'Une série de portraits capturant l\'élégance et la personnalité unique de chaque sujet.',
-    category: 'portrait',
-    coverImage: 'https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288508/_MG_4433-2_ujg7we.jpg',
-    photoCount: 4,
-    photos: [
+    "id": "portraits-claire-chantilly",
+    "title": "Claire, Hiver au jardin",
+    "description": "Une série de portraits capturant l'élégance et la personnalité unique de chaque sujet.",
+    "category": "portrait",
+    "coverImage": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288508/_MG_4433-2_ujg7we.jpg",
+    "photoCount": 4,
+    "photos": [
       {
-        id: 1,
-        src: 'https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288508/_MG_4433-2_ujg7we.jpg',
-        title: '',
-        description: ''
-      },
-      {
-        id: 2,
-        src: 'https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288509/_MG_4458_enryir.jpg',
-        title: '',
-        description: ''
+        "id": 1,
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288508/_MG_4433-2_ujg7we.jpg",
+        "title": "",
+        "description": ""
       },
       {
-        id: 3,
-        src: 'https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756305415/_MG_4384-5_obwqzy.jpg',
-        title: '',
-        description: ''
-      },
-       {
-        id: 4,
-        src: 'https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288508/_MG_4380_oua1iq.jpg',
-        title: '',
-        description: ''
-      },
-       {
-        id: 5,
-        src: 'https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288508/_MG_4435_lrniz9.jpg',
-        title: '',
-        description: ''
-      },
-       {
-        id: 6,
-        src: 'https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288509/_MG_4447-Enhanced-NR_pdhdsk.jpg',
-        title: '',
-        description: ''
+        "id": 2,
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288509/_MG_4458_enryir.jpg",
+        "title": "",
+        "description": ""
       },
       {
-        id: 7,
-        src: 'https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756305738/_MG_4476_n7h4xx.jpg',
-        title: '',
-        description: ''
+        "id": 3,
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756305415/_MG_4384-5_obwqzy.jpg",
+        "title": "",
+        "description": ""
       },
       {
-        id: 8,
-        src: 'https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756305739/_MG_4478_aij41e.jpg',
-        title: '',
-        description: ''
+        "id": 4,
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288508/_MG_4380_oua1iq.jpg",
+        "title": "",
+        "description": ""
       },
       {
-        id: 9,
-        src: 'https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288512/_MG_4483-2_yowxqw.jpg',
-        title: '',
-        description: ''
+        "id": 5,
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288508/_MG_4435_lrniz9.jpg",
+        "title": "",
+        "description": ""   
+      },
+      {
+        "id": 6,
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288509/_MG_4447-Enhanced-NR_pdhdsk.jpg",
+        "title": "",
+        "description": ""
+      },
+      {
+        "id": 7,
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756305738/_MG_4476_n7h4xx.jpg",
+        "title": "",
+        "description": ""
+      },
+      {
+        "id": 8,
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756305739/_MG_4478_aij41e.jpg",
+        "title": "",
+        "description": ""
+      },
+      {
+        "id": 9,
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288512/_MG_4483-2_yowxqw.jpg",
+        "title": "",
+        "description": ""
       }
     ]
   },
+  
   {
     "id": "concert-ankor",
     "title": "Ankor au Petit Bain",
