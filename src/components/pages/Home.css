@@ -238,6 +238,17 @@
   border-radius: var(--border-radius);
 }
 
+/* Instagram Section */
+.instagram-section {
+  padding: 4rem 0;
+  background: #f8f9fa;
+}
+
+.home-instagram-feed {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 /* CTA Section */
 .cta-section {
   padding: 5rem 0;

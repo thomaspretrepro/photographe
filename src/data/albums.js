@@ -84,7 +84,7 @@ export const albumsData = [
         "id": 2,
         "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288472/_MG_4716_uxutjq.jpg",
         "title": "",
-        "description": "" 
+        "description": ""
       },
       {
         "id": 3,
@@ -168,7 +168,7 @@ export const albumsData = [
         "id": 5,
         "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288508/_MG_4435_lrniz9.jpg",
         "title": "",
-        "description": ""   
+        "description": ""
       },
       {
         "id": 6,
@@ -196,7 +196,6 @@ export const albumsData = [
       }
     ]
   },
-  
   {
     "id": "concert-ankor",
     "title": "Ankor au Petit Bain",
@@ -526,7 +525,83 @@ export const albumsData = [
       }
     ],
     "createdAt": "2025-01-26T10:00:00.000Z",
-    "updatedAt": "2025-01-26T10:00:00.000Z"
+    "updatedAt": "2026-05-06T14:21:33.383Z",
+    "photoCount": 5
+  },
+  {
+    "id": "test-2-apres-suppresion",
+    "title": "kari no ikari",
+    "description": "kari no ikari au Fertois",
+    "category": "concerts",
+    "coverImage": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1777983237/_MG_7024_ked6n9.jpg",
+    "photos": [
+      {
+        "id": "photo-33c03fce-e3db-41ea-9982-9c60f16aa3d3",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1777983237/_MG_7024_ked6n9.jpg",
+        "title": "",
+        "description": "",
+        "order": 1
+      },
+      {
+        "id": "photo-6339858f-410b-42d7-b77c-62e9203734ee",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1777983232/_MG_7192_pvbp5b.jpg",
+        "title": "",
+        "description": "",
+        "order": 2
+      },
+      {
+        "id": "photo-60ffc8df-3233-4808-bd41-62a1d6c9ccb5",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1777983253/_MG_6863_kkhtfb.jpg",
+        "title": "",
+        "description": "",
+        "order": 3
+      },
+      {
+        "id": "photo-271a3551-7a27-457f-9b7c-ffbabd4f9b0c",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1777983255/_MG_6855_a33qkr.jpg",
+        "title": "",
+        "description": "",
+        "order": 4
+      },
+      {
+        "id": "photo-01215493-63d3-4c9a-a871-c691d180048a",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1777983239/_MG_6812_osznhg.jpg",
+        "title": "",
+        "description": "",
+        "order": 5
+      },
+      {
+        "id": "photo-19bd0912-eafd-479f-a173-261769e4a5e1",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1777983232/_MG_7192_pvbp5b.jpg",
+        "title": "",
+        "description": "",
+        "order": 6
+      },
+      {
+        "id": "photo-4af03fcf-8d9d-44a9-88be-6ec8bf96ecf9",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1777983237/_MG_7024_ked6n9.jpg",
+        "title": "",
+        "description": "",
+        "order": 7
+      },
+      {
+        "id": "photo-28b3613d-109b-46ac-82a3-d721f09a2813",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1777983224/_MG_7160_jn8idr.jpg",
+        "title": "",
+        "description": "",
+        "order": 8
+      },
+      {
+        "id": "photo-18a5f19c-1e4b-4401-bd65-24fede4b671b",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1777983217/_MG_6878_opwrgl.jpg",
+        "title": "",
+        "description": "",
+        "order": 9
+      }
+    ],
+    "createdAt": "2026-05-06T14:20:48.205Z",
+    "updatedAt": "2026-05-06T14:23:41.738Z",
+    "photoCount": 9
   }
 ];
 
@@ -547,4 +622,25 @@ export const getGalleryAlbums = () => {
 export const getAllCategories = () => {
   const categories = [...new Set(albumsData.map(album => album.category))];
   return categories.sort();
+};
+
+// Helper function to get albums by category
+export const getAlbumsByCategory = (category) => {
+  return albumsData.filter(album => album.category === category);
+};
+
+// Helper function to get recent albums
+export const getRecentAlbums = (limit = 3) => {
+  return albumsData
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+    .slice(0, limit);
+};
+
+// Helper function to search albums
+export const searchAlbums = (query) => {
+  const searchTerm = query.toLowerCase();
+  return albumsData.filter(album => 
+    album.title.toLowerCase().includes(searchTerm) ||
+    album.description.toLowerCase().includes(searchTerm)
+  );
 };

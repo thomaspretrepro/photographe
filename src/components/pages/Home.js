@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { APP_CONFIG } from '../../utils/constants';
+import InstagramFeed from '../InstagramFeed';
 import './Home.css';
 
 const Home = () => {
@@ -25,7 +26,7 @@ const Home = () => {
     },
     {
       id: 3,
-      src: "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288469/_MG_4694_suin7j.jpg",
+      src: "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288474/_MG_4890-4_kkavwf.jpg",
       title: "Clara, rêverie au jardin",
       category: "portraits",
       albumId: "portraits-clara"
@@ -156,6 +157,19 @@ const Home = () => {
               />
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Instagram Feed Section */}
+      <section className="instagram-section">
+        <div className="container">
+          <InstagramFeed
+            limit={6}
+            showCaption={false}
+            showDate={false}
+            gridColumns={3}
+            className="home-instagram-feed"
+          />
         </div>
       </section>
 
