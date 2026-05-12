@@ -265,7 +265,7 @@ const AlbumForm = ({ album, onSave, onCancel }) => {
                                             <img
                                                 key={photo.id}
                                                 src={photo.src}
-                                                alt={`Photo ${index + 1}`}
+                                                alt={`${index + 1}`}
                                                 className="photo-preview"
                                             />
                                         ))}

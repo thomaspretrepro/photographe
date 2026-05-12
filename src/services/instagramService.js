@@ -220,4 +220,4 @@ class InstagramService {
 }
 
 // Export d'une instance unique
-export default new InstagramService();
+// export default new InstagramService();

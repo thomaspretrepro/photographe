@@ -28,42 +28,43 @@ const CloudinaryBrowser = ({ onPhotosSelected, onCancel }) => {
             return;
         }
 
-        try {
-            const widget = window.cloudinary.openMediaLibrary({
-                cloud_name: cloudName,
-                api_key: apiKey,
-                multiple: true,
-                max_files: 20,
-                resource_type: 'image',
-                button_class: 'cloudinary-button',
-                button_caption: 'Sélectionner des photos'
-            }, {
-                insertHandler: (data) => {
-                    console.log('Photos sélectionnées depuis la médiathèque:', data);
+        // try {
+        //     const widget = window.cloudinary.openMediaLibrary({
+        //         cloud_name: cloudName,
+        //         api_key: apiKey,
+        //         multiple: true,
+        //         max_files: 20,
+        //         resource_type: 'image',
+        //         button_class: 'cloudinary-button',
+        //         button_caption: 'Sélectionner des photos'
+        //     }, 
+        //     {
+        //         insertHandler: (data) => {
+        //             console.log('Photos sélectionnées depuis la médiathèque:', data);
 
-                    // Transformer les données pour notre format
-                    const transformedPhotos = data.assets.map(asset => ({
-                        public_id: asset.public_id,
-                        secure_url: asset.secure_url,
-                        width: asset.width,
-                        height: asset.height,
-                        format: asset.format,
-                        folder: asset.public_id.split('/')[0] || 'root',
-                        created_at: asset.created_at,
-                        bytes: asset.bytes,
-                        tags: asset.tags || []
-                    }));
+        //             // Transformer les données pour notre format
+        //             const transformedPhotos = data.assets.map(asset => ({
+        //                 public_id: asset.public_id,
+        //                 secure_url: asset.secure_url,
+        //                 width: asset.width,
+        //                 height: asset.height,
+        //                 format: asset.format,
+        //                 folder: asset.public_id.split('/')[0] || 'root',
+        //                 created_at: asset.created_at,
+        //                 bytes: asset.bytes,
+        //                 tags: asset.tags || []
+        //             }));
 
-                    setSelectedPhotos(prev => [...prev, ...transformedPhotos]);
-                }
-            });
+        //             setSelectedPhotos(prev => [...prev, ...transformedPhotos]);
+        //         }
+        //     });
 
-        } catch (error) {
-            console.error('Erreur Media Library:', error);
+        // } catch (error) {
+        //     console.error('Erreur Media Library:', error);
 
-            // Fallback : Widget d'upload avec option browse
-            openUploadWidget();
-        }
+        //     // Fallback : Widget d'upload avec option browse
+        //     openUploadWidget();
+        // }
     };
 
     // Fallback : Widget d'upload avec possibilité de browse
