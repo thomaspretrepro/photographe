@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { getGalleryAlbums, getAllCategories } from '../../data/albums';
 import { ALBUM_CATEGORIES } from '../../utils/constants';
 import './Gallery.css';
@@ -61,6 +62,12 @@ const Gallery = () => {
 
   return (
     <div className="gallery">
+        <Helmet>
+        <title>Galerie Photo | Thomas Prêtre Photographe</title>
+        <meta name="description" content="Explorez mes collections photographiques : portraits, paysages, concerts et plus encore." />
+        <meta property="og:title" content="Galerie Photo | Thomas Prêtre" />
+        <meta property="og:description" content="Explorez mes collections photographiques organisées par thème." />
+      </Helmet>
       <div className="container">
         {/* Header */}
         <div className="gallery-header">

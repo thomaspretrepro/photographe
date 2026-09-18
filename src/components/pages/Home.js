@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { APP_CONFIG } from '../../utils/constants';
 import './Home.css';
 
@@ -64,6 +65,15 @@ const Home = () => {
 
   return (
     <div className="home">
+      <Helmet>
+        <title>Thomas Prêtre | Photographe - Portraits, Paysages, Concerts</title>
+        <meta name="description" content="Photographe passionné capturant portraits, paysages et concerts. Découvrez mes galeries photo et contactez-moi pour votre projet." />
+        <meta property="og:title" content="Thomas Prêtre | Photographe" />
+        <meta property="og:description" content="Photographe passionné capturant portraits, paysages et concerts." />
+        <meta property="og:image" content="https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288469/_MG_4694_suin7j.jpg" />
+        <meta property="og:type" content="website" />
+      </Helmet>
+
       {/* Hero Section avec Slider */}
       <section
         className="hero-slider"
@@ -172,6 +182,7 @@ const Home = () => {
         </div>
       </section>
     </div>
+
   );
 };
 

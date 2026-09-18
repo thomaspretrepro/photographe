@@ -173,6 +173,7 @@ Le site est entièrement responsive avec :
 - Galerie publique avec commentaires
 - Système de commandes/devis
 - Analytics avancées
+- ajout de tracking de boutons
 
 ## 📞 Support
 
