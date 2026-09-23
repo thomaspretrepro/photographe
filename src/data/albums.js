@@ -1,4 +1,155 @@
 export const albumsData = [
+    {
+    "id": "baby-berzerk",
+    "title": "Baby Berzerk",
+    "description": "Concert de Baby Berzerk à la grange à musique",
+    "category": "concerts",
+    "coverImage": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093470/_MG_6690_ve3i7l.jpg",
+    "photos": [
+      {
+        "id": "1",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093470/_MG_6690_ve3i7l.jpg",
+        "title": "",
+        "description": "",
+        "order": 1
+      },
+      {
+        "id": "2",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093470/_MG_6644_zgeaw2.jpg",
+        "title": "",
+        "description": "",
+        "order": 2
+      },
+      {
+        "id": "3",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093471/_MG_6728_nekhyk.jpg",
+        "title": "",
+        "description": "",
+        "order": 3
+      },
+      {
+        "id": "4",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093473/_MG_6094_sbaatn.jpg",
+        "title": "",
+        "description": "",
+        "order": 4
+      },
+      {
+        "id": "5",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093474/_MG_6751_l7tc8q.jpg",
+        "title": "",
+        "description": "",
+        "order": 5
+      },
+      {
+        "id": "6",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093477/_MG_6801_ip6iws.jpg",
+        "title": "",
+        "description": "",
+        "order": 6
+      },
+      {
+        "id": "7",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093477/_MG_6206_pvkgzf.jpg",
+        "title": "",
+        "description": "",
+        "order": 7
+      },
+      {
+        "id": "8",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093478/_MG_6318-2_dgkzwo.jpg",
+        "title": "",
+        "description": "",
+        "order": 8
+      },
+      {
+        "id": "9",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093479/_MG_6670_brgmil.jpg",
+        "title": "",
+        "description": "",
+        "order": 9
+      },
+      {
+        "id": "10",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093479/_MG_6634_uwbxqk.jpg",
+        "title": "",
+        "description": "",
+        "order": 10
+      },
+      {
+        "id": "11",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093480/_MG_6592_x2f7td.jpg",
+        "title": "",
+        "description": "",
+        "order": 11
+      },
+      {
+        "id": "12",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093480/_MG_6611_eu2f2u.jpg",
+        "title": "",
+        "description": "",
+        "order": 12
+      },
+      {
+        "id": "13",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093481/_MG_6748-3_jv1dyb.jpg",
+        "title": "",
+        "description": "",
+        "order": 13
+      },
+      {
+        "id": "14",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093482/_MG_6748-2_byy5al.jpg",
+        "title": "",
+        "description": "",
+        "order": 14
+      },
+      {
+        "id": "15",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093482/_MG_6748_u1cwcz.jpg",
+        "title": "",
+        "description": "",
+        "order": 15
+      },
+      {
+        "id": "16",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093483/_MG_5981_aidwdj.jpg",
+        "title": "",
+        "description": "",
+        "order": 16
+      },
+      {
+        "id": "17",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093484/_MG_6318_e1m52z.jpg",
+        "title": "",
+        "description": "",
+        "order": 17
+      },
+      {
+        "id": "18",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093485/_MG_6697_w7lida.jpg",
+        "title": "",
+        "description": "",
+        "order": 18
+      },
+      {
+        "id": "19",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093485/_MG_6626_hiclm2.jpg",
+        "title": "",
+        "description": "",
+        "order": 19
+      },
+      {
+        "id": "20",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093485/_MG_5981-2_bgxh4t.jpg",
+        "title": "",
+        "description": "",
+        "order": 20
+      }
+    ],
+    "createdAt": "2026-09-23T13:28:58.053Z",
+    "updatedAt": "2026-09-23T13:36:20.080Z"
+  },
   {
     "id": "portraits-claire-cerceaux",
     "title": "Claire, ballet du cercle et de l'eau",
