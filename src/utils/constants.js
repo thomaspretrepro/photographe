@@ -4,7 +4,7 @@ export const APP_CONFIG = {
   photographer: 'Thomas Prêtre',
   email: 'thomas.pretre.pro@gmail.com',
   instagram: 'https://www.instagram.com/tom_p_pics/',
-  description: 'Photographe professionnel spécialisé en portraits, paysages et événements'
+  description: 'Photographe amateur spécialisé en portraits, paysages et concerts. Découvrez mes galeries et contactez-moi pour vos projets photographiques.'
 };
 
 // Catégories d'albums

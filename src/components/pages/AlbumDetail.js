@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { getAlbumById } from '../../data/albums';
 import './AlbumDetail.css';
 
@@ -105,6 +106,14 @@ const AlbumDetail = () => {
 
   return (
     <div className="album-detail">
+      <Helmet>
+        <title>{album.title} | Thomas Prêtre Photographe</title>
+        <meta name="description" content={album.description} />
+        <meta property="og:title" content={album.title} />
+        <meta property="og:description" content={album.description} />
+        <meta property="og:image" content={album.coverImage || album.photos?.[0]?.src} />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <div className="container">
         {/* Header */}
         <div className="album-header">

@@ -83,19 +83,6 @@
   margin: 0;
 }
 
-.admin-link {
-  color: rgba(255, 255, 255, 0.6);
-  text-decoration: none;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: var(--transition);
-}
-
-.admin-link:hover {
-  color: rgba(255, 255, 255, 0.8);
-}
-
 /* Mobile Styles */
 @media (max-width: 768px) {
   .footer-content {

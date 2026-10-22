@@ -1,179 +1,173 @@
-# Site de Photographe - Thomas Prêtre
+# 📸 Site Photographe — Thomas Prêtre
 
-Site web professionnel pour photographe avec galerie d'albums et interface d'administration dynamique.
+Site vitrine statique (React / Create React App) hébergé sur Vercel. Les photos sont stockées sur Cloudinary et référencées dans `src/data/albums.js`. Pas de backend, pas de base de données.
 
-## 🚀 Technologies utilisées
+- **Production** : https://thomaspretre.fr (branche `main`)
+- **Préprod** : URL Preview Vercel (branche `develop`)
 
-- **Frontend** : React 18, React Router
-- **Backend** : Vercel Functions (Node.js)
-- **Base de données** : Fichier JSON (évolutif vers base de données)
-- **Authentification** : JWT
-- **Images** : Cloudinary CDN
-- **Hébergement** : Vercel
-- **Styling** : CSS3 avec variables personnalisées
+## 🧱 Stack
 
-## 📁 Structure du projet
+- React 18, React Router 6
+- `react-helmet-async` : titre et meta tags (SEO / Open Graph) par page
+- `react-ga4` : Google Analytics 4
+- Cloudinary : hébergement des images
+- Vercel : déploiement
+
+## 📁 Structure
 
 ```
-/
-├── api/                    # Vercel Functions (Backend)
-│   ├── auth/
-│   │   └── login.js       # Authentification
-│   ├── albums/
-│   │   ├── index.js       # CRUD albums
-│   │   └── [id].js        # Album spécifique
-│   ├── photos/
-│   │   └── upload.js      # Upload Cloudinary
-│   └── data/
-│       └── albums.json    # Base de données JSON
-├── src/                   # Frontend React
-│   ├── components/
-│   │   ├── admin/         # Interface d'administration
-│   │   ├── layout/        # Layout et navigation
-│   │   └── pages/         # Pages principales
-│   ├── services/          # Services API
-│   ├── styles/            # Styles globaux
-│   └── utils/             # Utilitaires et constantes
-├── vercel.json            # Configuration Vercel
-└── package.json
+src/
+  App.js                  routes + tracking Analytics
+  components/layout/      Header, Footer, Layout
+  components/pages/       Home, Gallery, AlbumDetail, Contact
+  data/albums.js          données des albums (source de vérité)
+  utils/                  analytics.js, constants.js
+scripts/
+  create-album.js         import d'un album depuis Cloudinary
+  generate-sitemap.js     génération de public/sitemap.xml
+public/                   index.html, robots.txt, sitemap.xml, icônes
 ```
 
-## 🛠️ Installation et développement
+## 🚀 Démarrage
 
-1. **Cloner le repository**
-   ```bash
-   git clone [url-du-repo]
-   cd photographe
-   ```
-
-2. **Installer les dépendances**
-   ```bash
-   npm install
-   ```
-
-3. **Configuration des variables d'environnement**
-   ```bash
-   cp .env.example .env
-   ```
-   Puis remplir les valeurs dans `.env` :
-   - Cloudinary (cloud_name, api_key, api_secret)
-   - JWT secret
-   - Identifiants admin
-
-4. **Lancer le serveur de développement**
-   ```bash
-   npm run dev
-   ```
-
-5. **Build pour la production**
-   ```bash
-   npm run build
-   ```
-
-## 🔧 Configuration
-
-### Variables d'environnement requises
-
-```env
-# Cloudinary
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_api_key
-CLOUDINARY_API_SECRET=your_api_secret
-
-# React (publiques)
-REACT_APP_CLOUDINARY_CLOUD_NAME=your_cloud_name
-REACT_APP_CLOUDINARY_UPLOAD_PRESET=your_upload_preset
-
-# Authentification
-JWT_SECRET=your_super_secret_jwt_key
-ADMIN_USERNAME=admin
-ADMIN_PASSWORD_HASH=your_hashed_password
-
-# EmailJS (optionnel)
-REACT_APP_EMAILJS_SERVICE_ID=your_service_id
-REACT_APP_EMAILJS_TEMPLATE_ID=your_template_id
-REACT_APP_EMAILJS_PUBLIC_KEY=your_public_key
-```
-
-## 🔐 Interface d'administration
-
-### Accès
-- URL : `/admin`
-- Identifiants par défaut : `admin` / `admin123`
-
-### Fonctionnalités
-- ✅ Authentification sécurisée (JWT)
-- ✅ Visualisation des albums et statistiques
-- ✅ Gestion CRUD des albums
-- ✅ Upload d'images vers Cloudinary
-- ✅ Interface responsive
-
-## 📡 API Endpoints
-
-### Authentification
-- `POST /api/auth/login` - Connexion admin
-
-### Albums
-- `GET /api/albums` - Récupérer tous les albums
-- `POST /api/albums` - Créer un album
-- `GET /api/albums/:id` - Récupérer un album
-- `PUT /api/albums/:id` - Modifier un album
-- `DELETE /api/albums/:id` - Supprimer un album
-
-### Photos
-- `POST /api/photos/upload` - Upload vers Cloudinary
-
-## 📸 Gestion des images
-
-Les images sont hébergées sur Cloudinary pour :
-- Optimisation automatique
-- Redimensionnement responsive
-- CDN global pour des performances optimales
-- Transformations à la volée
-
-## 🧪 Tests
-
-Tester les APIs localement :
 ```bash
-node test-api.js
+npm install
+cp .env.example .env     # puis renseigner les valeurs
+npm start                # http://localhost:3000
 ```
 
-## 🚀 Déploiement sur Vercel
+### Commandes
 
-1. **Connecter le repository à Vercel**
-2. **Configurer les variables d'environnement** dans le dashboard Vercel
-3. **Déployer automatiquement** via Git push
+| Commande | Rôle |
+|---|---|
+| `npm start` | Serveur de développement |
+| `npm run build` | Build de production (régénère d'abord le sitemap via `prebuild`) |
+| `npm run generate-sitemap` | Régénère `public/sitemap.xml` seul |
+| `npm run create-album -- <args>` | Crée ou met à jour un album (voir plus bas) |
 
-### Variables d'environnement Vercel
-Ajouter toutes les variables du fichier `.env` dans :
-`Vercel Dashboard > Project > Settings > Environment Variables`
+> Les commandes se lancent à la **racine** du projet (il n'y a pas de dossier `client`).
 
-## 🎨 Personnalisation
+## 🔐 Variables d'environnement
 
-### Couleurs
-Les couleurs principales sont définies dans `src/styles/globals.css`
+Voir `.env.example`. Les fichiers `.env` et `.env.local` ne sont jamais commités.
 
-### Configuration
-Modifier `src/utils/constants.js` pour :
-- Informations du photographe
-- Catégories d'albums
-- Configuration de l'application
+| Variable | Usage |
+|---|---|
+| `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET` | Script `create-album` uniquement (Node). **Ne jamais** préfixer par `REACT_APP_` : ces valeurs finiraient dans le bundle public. |
+| `REACT_APP_GA_MEASUREMENT_ID` | ID Google Analytics 4 (`G-XXXXXXXXXX`). Pas un secret. À définir aussi sur Vercel (Production et Preview). |
+| `REACT_APP_EMAILJS_*` | Formulaire de contact (optionnel) |
+| `REACT_APP_INSTAGRAM_ACCESS_TOKEN` | Flux Instagram (optionnel, voir `INSTAGRAM-SETUP.md`) |
 
-## 📱 Responsive Design
+### Registre npm (`.npmrc`)
 
-Le site est entièrement responsive avec :
-- Design mobile-first
-- Breakpoints adaptatifs
-- Images optimisées pour tous les écrans
+Le fichier `.npmrc` force le registre public (`registry=https://registry.npmjs.org/`). Il est **indispensable** : sans lui, une config npm globale pointant vers un registre d'entreprise se retrouve dans `package-lock.json`, et le build Vercel échoue (`ENOTFOUND`). À recopier dans chaque projet perso.
 
-## 🔄 Évolutions futures
+## 🌳 Workflow Git et déploiement
 
-- Migration vers une vraie base de données (PostgreSQL/MongoDB)
-- Système de rôles utilisateurs
-- Galerie publique avec commentaires
-- Système de commandes/devis
-- Analytics avancées
+| Branche | Rôle | Déploiement Vercel |
+|---|---|---|
+| `develop` | Développement quotidien | **Preview** automatique à chaque push |
+| `main` | Production | **Production** automatique à chaque merge |
 
-## 📞 Support
+⚠️ **On ne travaille jamais directement sur `main`.**
 
-Pour toute question ou problème, consulter la documentation ou créer une issue.
+### Au quotidien
+
+```bash
+git checkout develop
+git pull origin develop
+# ... modifications, tests avec npm start / npm run build ...
+git add .
+git commit -m "feat: description"
+git push origin develop
+```
+
+Vercel déploie une Preview (Dashboard → Deployments, URL du type `photographe-git-develop-xxx.vercel.app`). Vérifier :
+
+- [ ] Accueil, galerie, albums, contact sans erreur
+- [ ] Chaque bouton « VOIR LE PROJET » du slider mène au bon album
+- [ ] Mobile et desktop
+- [ ] Google Analytics → Temps réel : les visites remontent
+
+### Passage en production
+
+1. GitHub → **Pull Requests** → nouvelle PR `develop` → `main`
+2. Relire le diff, puis **Merge**
+3. Vercel déploie automatiquement en Production
+
+Ne pas faire `git merge` en local sur `main`.
+
+### Configuration Vercel (une fois)
+
+Settings → Git : **Production Branch** = `main`. Les autres branches (`develop`) sont en Preview.
+
+### Rollback
+
+Vercel → Deployments → choisir un ancien déploiement → **Promote to Production** / **Instant Rollback**. Éviter `git push --force` sur `main`.
+
+### Commits
+
+`feat:` nouveauté · `fix:` correction · `docs:` documentation · `style:` mise en forme · `refactor:` refonte · `chore:` dépendances, config
+
+## 🖼️ Albums
+
+Les albums sont dans `src/data/albums.js` (`albumsData`). Chaque album a : `id`, `title`, `description`, `category`, `coverImage`, `photos[]`, `createdAt`, `updatedAt`, et optionnellement `eventDate` et `displayOrder`.
+
+### Ajouter ou mettre à jour un album
+
+1. **Cloudinary** : créer un dossier par album (ex. `noel-2025`) et y mettre les photos.
+2. **Clés API** dans `.env` (Cloudinary → Settings → API Keys).
+3. Lancer le script :
+
+```bash
+node scripts/create-album.js <dossier-cloudinary> <id> "<titre>" "<description>" <categorie> [date]
+```
+
+Exemple :
+
+```bash
+node scripts/create-album.js noel-2025 noel-2025 "Noël en famille" "Souvenirs de Noël 2025" portrait 2025-12-25
+```
+
+Le script récupère les photos du dossier, génère le bloc de l'album et l'insère en tête de `albumsData`. Si l'`id` existe déjà, l'album est **mis à jour** (photos remplacées, `createdAt` conservé, `updatedAt` rafraîchi, ancienne `eventDate` conservée si aucune n'est donnée).
+
+L'`id` sert d'URL (`/gallery/<id>`) : privilégier minuscules et tirets, sans espaces.
+
+4. Optionnel : éditer `albums.js` pour titrer ou décrire certaines photos.
+5. `npm run build`, puis commit et push sur `develop`.
+
+### Ordre d'affichage
+
+1. Albums avec `eventDate` (`YYYY-MM-DD`) en premier, du plus récent au plus ancien.
+2. Albums sans `eventDate`, triés par `displayOrder` croissant.
+3. En cas d'égalité, `createdAt` le plus récent d'abord.
+
+En développement, un avertissement console signale les `displayOrder` en doublon (albums sans `eventDate`).
+
+### Catégories
+
+Valeurs utilisées : `portrait`, `landscape`, `concerts`, `spectacle`, `essais`, `Astrophotographie`. Garder une orthographe identique d'un album à l'autre, sinon le filtre de la galerie crée une catégorie en plus.
+
+## 📈 Analytics et SEO
+
+- **Google Analytics 4** : initialisé dans `App.js` via `utils/analytics.js`, une page vue par changement de route. Ne pas ajouter la balise `gtag.js` dans `index.html` (doublon de comptage).
+- **Meta tags** : chaque page définit son `<Helmet>` (titre, description, `og:*`). `public/index.html` ne contient volontairement plus de `og:*` en dur, pour éviter les doublons. Contrôle dans DevTools → Elements → `<head>` (une seule balise `og:title`, avec `data-rh="true"`). Le « code source » de la page ne les montre pas : ils sont ajoutés par JavaScript.
+- **Sitemap** : `public/sitemap.xml` généré automatiquement avant chaque build à partir des `id` d'albums.
+- **`public/robots.txt`** : autorise tout et référence le sitemap.
+- **Search Console** : propriété `thomaspretre.fr`, sitemap `https://thomaspretre.fr/sitemap.xml` à soumettre.
+
+## 🐛 Dépannage
+
+| Symptôme | Cause / solution |
+|---|---|
+| `ENOENT package.json` | Commande lancée hors de la racine du projet |
+| Build Vercel : `ENOTFOUND` sur un registre interne | `.npmrc` absent ou non commité, ou `package-lock.json` contenant `glouton` (`grep -c glouton package-lock.json` doit afficher 0) |
+| `Helmet is not defined` | Import `react-helmet-async` manquant dans la page |
+| `Cannot read properties of undefined (reading 'add')` | `HelmetProvider` absent de `src/index.js` |
+| Tous les liens du slider mènent au même album | Les slides sont superposées : `.slide` doit avoir `pointer-events: none`, `.slide.active` `pointer-events: auto` |
+| Un album ne s'ouvre pas | `id` dupliqué ou avec des espaces dans `albums.js` |
+| `error: Pulling is not possible because you have unmerged files` | Résoudre les conflits (`git status`), `git add`, `git commit` |
+
+## 🗺️ À faire
+
+- Flux Instagram (composants présents mais désactivés sur la page d'accueil)

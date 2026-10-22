@@ -1,6 +1,6 @@
 /* Contact Page Styles */
 .contact {
-  min-height: 100vh;
+  /* min-height: 100vh; */
   padding: 2rem 0;
   background: var(--background-color);
 }
@@ -130,7 +130,7 @@
 .form-group label {
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--text-color);
+  color: var(--text-contact);
   margin-bottom: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -362,18 +362,19 @@
 @media (prefers-color-scheme: dark) {
   .contact-form-container {
     background: var(--card-background, #2c3e50);
-    color: var(--text-color);
+    color: #000;
   }
 
   .form-group input,
   .form-group textarea {
-    background: var(--input-background, #34495e);
+    background: var(--input-background, #fff);
     border-color: var(--border-color);
-    color: var(--text-color);
+    color: #000;
   }
 
   .form-group input:focus,
   .form-group textarea:focus {
-    background: var(--input-background, #34495e);
+    background: var(--input-background, #fff);
+    color: #000;
   }
 }
