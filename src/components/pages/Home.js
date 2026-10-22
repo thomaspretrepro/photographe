@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { APP_CONFIG } from '../../utils/constants';
-import InstagramFeed from '../InstagramFeed';
 import './Home.css';
 
 const Home = () => {
@@ -178,7 +177,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Instagram Feed Section */}
+      {/* Instagram Feed Section (désactivée : réimporter InstagramFeed pour la réactiver) */}
       {/* <section className="instagram-section">
         <div className="container">
           <InstagramFeed

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import instagramService from '../services/instagramService';
 import './InstagramFeed.css';
 
@@ -13,11 +13,7 @@ const InstagramFeed = ({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    loadInstagramFeed();
-  }, [limit]);
-
-  const loadInstagramFeed = async () => {
+  const loadInstagramFeed = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
@@ -29,7 +25,11 @@ const InstagramFeed = ({
     } finally {
       setLoading(false);
     }
-  };
+  }, [limit]);
+
+  useEffect(() => {
+    loadInstagramFeed();
+  }, [loadInstagramFeed]);
 
   const handlePostClick = (permalink) => {
     window.open(permalink, '_blank', 'noopener,noreferrer');
