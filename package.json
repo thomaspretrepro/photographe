@@ -13,8 +13,6 @@
     "create-album": "node scripts/create-album.js"
   },
   "dependencies": {
-    "cloudinary": "^2.11.0",
-    "dotenv": "^18.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-ga4": "^3.0.1",
@@ -24,7 +22,9 @@
   },
   "devDependencies": {
     "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0"
+    "@types/react-dom": "^18.0.0",
+    "cloudinary": "^2.11.0",
+    "dotenv": "^18.0.8"
   },
   "eslintConfig": {
     "extends": [

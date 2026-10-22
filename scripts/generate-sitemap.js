@@ -7,14 +7,9 @@ const SITE_URL = 'https://thomaspretre.fr';
 const albumsPath = path.join(__dirname, '../src/data/albums.js');
 const albumsContent = fs.readFileSync(albumsPath, 'utf-8');
 
-// Extraction des ids : on garde uniquement les ids non-numériques (album ids), 
-// pour exclure les ids de photos qui sont des nombres ("1", "2", etc.)
-const idMatches = [...albumsContent.matchAll(/"id":\s*"([^"]+)"/g)];
-const albumIds = [...new Set(
-  idMatches
-    .map(m => m[1])
-    .filter(id => isNaN(id)) // exclut "1", "2", "3"...
-)];
+// Un album a "title" juste après son "id" (une photo a "src"), ce qui exclut les ids de photos
+const idMatches = [...albumsContent.matchAll(/"id":\s*"([^"]+)",\s*"title":/g)];
+const albumIds = [...new Set(idMatches.map(m => m[1]))];
 
 const staticPages = [
   { url: '/', priority: '1.0', changefreq: 'weekly' },
@@ -23,7 +18,7 @@ const staticPages = [
 ];
 
 const albumPages = albumIds.map(id => ({
-  url: `/gallery/${id}`,
+  url: `/gallery/${encodeURIComponent(id)}`,
   priority: '0.7',
   changefreq: 'monthly',
 }));

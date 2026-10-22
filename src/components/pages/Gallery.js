@@ -72,7 +72,7 @@ const Gallery = () => {
         {/* Header */}
         <div className="gallery-header">
           <h1>Galerie</h1>
-          <p>Explorez mes collections photographiques organisées par thème</p>
+          <p>Explorez mon univers</p>
         </div>
 
         {/* Filtres */}
@@ -108,7 +108,7 @@ const Gallery = () => {
                   <div className="album-overlay">
                     <div className="album-info">
                       <h3>{album.title}</h3>
-                      <p>{album.photoCount || 0} photos</p>
+                      <p className="album-photo-count">{album.photoCount || 0} photos</p>
                     </div>
                   </div>
                 </div>
