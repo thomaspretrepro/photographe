@@ -148,13 +148,7 @@ export const albumsData = [
         "description": "",
         "order": 5
       },
-      {
-        "id": "6",
-        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093256/_MG_9151_ajsutt.jpg",
-        "title": "",
-        "description": "",
-        "order": 6
-      },
+     
       {
         "id": "7",
         "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093256/_MG_9151-2_wuqwxf.jpg",

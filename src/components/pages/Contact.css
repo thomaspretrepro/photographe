@@ -1,6 +1,6 @@
 /* Contact Page Styles */
 .contact {
-  min-height: 100vh;
+  /* min-height: 100vh; */
   padding: 2rem 0;
   background: var(--background-color);
 }
