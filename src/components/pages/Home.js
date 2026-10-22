@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { APP_CONFIG } from '../../utils/constants';
 import InstagramFeed from '../InstagramFeed';
 import './Home.css';
@@ -12,31 +13,39 @@ const Home = () => {
   const heroSlides = [
     {
       id: 1,
+      src: "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093256/_MG_8873_zaz6by.jpg",
+      title: "Légendaire",
+      category: "Spectacle",
+      albumId: "Cie-Remue-menage-2026"
+    },
+    {
+      id: 2,
+      src: "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093865/_MG_2910_pdfcsr.jpg",
+      title: "Release Beneath My Sins",
+      category: "concert",
+      albumId: "BMS-Release-peniche-antipode"
+    },
+     {
+      id: 3,
+      src: "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093299/master-low_hranhh.jpg",
+      title: "Eclipse Solaire",
+      category: "Astrophotographie",
+      albumId: "Eclipse-2026"
+    },
+    {
+      id: 4,
       src: "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288586/IMG_3656_g2glww.jpg",
       title: "Nature Morte",
       category: "essais",
       albumId: "essais-devoirs"
     },
+    
     {
-      id: 2,
-      src: "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756308038/_MG_0511-min_mw7dnn.jpg",
-      title: "Falaises d'étretat",
-      category: "landscape",
-      albumId: "etretat"
-    },
-    {
-      id: 3,
-      src: "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288474/_MG_4890-4_kkavwf.jpg",
+      id: 5,
+      src: "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288469/_MG_4694_suin7j.jpg",
       title: "Clara, rêverie au jardin",
       category: "portraits",
       albumId: "portraits-clara"
-    },
-    {
-      id: 4,
-      src: "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756289027/_MG_2507-Enhanced-NR-2_faldyq.jpg",
-      title: "Ankor au petit bain",
-      category: "concerts",
-      albumId: "concert-ankor"
     }
   ];
 
@@ -65,6 +74,15 @@ const Home = () => {
 
   return (
     <div className="home">
+      <Helmet>
+        <title>Thomas Prêtre | Photographe - Portraits, Paysages, Concerts</title>
+        <meta name="description" content="Photographe passionné capturant portraits, paysages et concerts. Découvrez mes galeries photo et contactez-moi pour votre projet." />
+        <meta property="og:title" content="Thomas Prêtre | Photographe" />
+        <meta property="og:description" content="Photographe passionné capturant portraits, paysages et concerts." />
+        <meta property="og:image" content="https://res.cloudinary.com/dgcpwz1u4/image/upload/v1752831346/_DSC0660_eea9yl.jpg" />
+        <meta property="og:type" content="website" />
+      </Helmet>
+
       {/* Hero Section avec Slider */}
       <section
         className="hero-slider"
@@ -161,7 +179,7 @@ const Home = () => {
       </section>
 
       {/* Instagram Feed Section */}
-      <section className="instagram-section">
+      {/* <section className="instagram-section">
         <div className="container">
           <InstagramFeed
             limit={6}
@@ -171,7 +189,7 @@ const Home = () => {
             className="home-instagram-feed"
           />
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
       <section className="cta-section">
