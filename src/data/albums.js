@@ -303,7 +303,7 @@ export const albumsData = [
     "id": "BMS-Release-peniche-antipode",
     "title": "Beneath My Sins à la Péniche Antipode",
     "description": "Release Party de Beneath My Sins le 01/02/2026 à la Péniche Antipode",
-    "category": "sconcerts",
+    "category": "concerts",
     "coverImage": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093810/_MG_3310_sn9kot.jpg",
     "eventDate": "2026-02-01",
     "displayOrder": 1,
