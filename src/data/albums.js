@@ -421,13 +421,7 @@ export const albumsData = [
         "description": "",
         "order": 17
       },
-      {
-        "id": "18",
-        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093882/_MG_3058-2_onz7ew.jpg",
-        "title": "",
-        "description": "",
-        "order": 18
-      },
+      
       {
         "id": "19",
         "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093883/_MG_3353_jdzxra.jpg",
@@ -783,20 +777,7 @@ export const albumsData = [
         "description": "",
         "order": 12
       },
-      {
-        "id": "13",
-        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093481/_MG_6748-3_jv1dyb.jpg",
-        "title": "",
-        "description": "",
-        "order": 13
-      },
-      {
-        "id": "14",
-        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093482/_MG_6748-2_byy5al.jpg",
-        "title": "",
-        "description": "",
-        "order": 14
-      },
+     
       {
         "id": "15",
         "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1790093482/_MG_6748_u1cwcz.jpg",
@@ -1449,13 +1430,7 @@ export const albumsData = [
         "description": "",
         "order": 6
       },
-      {
-        "id": "photo-4af03fcf-8d9d-44a9-88be-6ec8bf96ecf9",
-        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1777983237/_MG_7024_ked6n9.jpg",
-        "title": "",
-        "description": "",
-        "order": 7
-      },
+      
       {
         "id": "photo-28b3613d-109b-46ac-82a3-d721f09a2813",
         "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1777983224/_MG_7160_jn8idr.jpg",
