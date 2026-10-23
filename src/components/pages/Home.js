@@ -44,7 +44,7 @@ const Home = () => {
       src: "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288469/_MG_4694_suin7j.jpg",
       title: "Clara, rêverie au jardin",
       category: "portraits",
-      albumId: "portraits-clara"
+      albumId: "portraits-carla"
     }
   ];
 

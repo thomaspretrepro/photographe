@@ -1,5 +1,188 @@
 export const albumsData = [
   {
+    "id": "buse-harry",
+    "title": "Harry, retour dans les airs",
+    "description": "Reprise du vol pour Harry, jeune buse de harris",
+    "category": "Animaux",
+    "coverImage": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288728/_MG_0327_mdyodo.jpg",
+    "eventDate": "2024-09-08",
+    "displayOrder": 1,
+    "photos": [
+       {
+        "id": "4",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288728/_MG_0327_mdyodo.jpg",
+        "title": "",
+        "description": "",
+        "order": 4
+      },
+       {
+        "id": "5",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288730/_MG_0468_xdney4.jpg",
+        "title": "",
+        "description": "",
+        "order": 5
+      },
+      {
+        "id": "1",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288727/_MG_0081_cfhghx.jpg",
+        "title": "",
+        "description": "",
+        "order": 1
+      },
+      {
+        "id": "2",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288727/_MG_0126_evtdcd.jpg",
+        "title": "",
+        "description": "",
+        "order": 2
+      },
+      {
+        "id": "3",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288728/_MG_0407_ybfffr.jpg",
+        "title": "",
+        "description": "",
+        "order": 3
+      }
+     
+     
+    ],
+    "createdAt": "2026-10-23T15:27:05.858Z",
+    "updatedAt": "2026-10-23T15:27:05.859Z"
+  },
+  {
+    "id": "champion-etoile",
+    "title": "Champion et Etoile, stars du pré",
+    "description": "Champion et Etoiles, un cheval et un poney à la retraite apres un belle carrière",
+    "category": "Animaux",
+    "coverImage": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1792763633/_MG_1836_ljarfs.jpg",
+    "eventDate": "2024-09-17",
+    "displayOrder": 1,
+    "photos": [
+      {
+        "id": "4",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1792763633/_MG_1836_ljarfs.jpg",
+        "title": "",
+        "description": "",
+        "order": 4
+      },
+      {
+        "id": "1",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1792763631/_MG_1927_mbvuxn.jpg",
+        "title": "",
+        "description": "",
+        "order": 1
+      },
+      {
+        "id": "2",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1792763632/_MG_1873_v3mvaa.jpg",
+        "title": "",
+        "description": "",
+        "order": 2
+      },
+      {
+        "id": "3",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1792763632/_MG_1889_m9sxd3.jpg",
+        "title": "",
+        "description": "",
+        "order": 3
+      },
+      
+      {
+        "id": "5",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1792763635/_MG_1821_emfzq3.jpg",
+        "title": "",
+        "description": "",
+        "order": 5
+      },
+      {
+        "id": "6",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1792763636/_MG_1931_dqaqov.jpg",
+        "title": "",
+        "description": "",
+        "order": 6
+      },
+      {
+        "id": "7",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1792763636/_MG_1814_fvngn3.jpg",
+        "title": "",
+        "description": "",
+        "order": 7
+      },
+      {
+        "id": "8",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1792763637/_MG_1901_h3vd3g.jpg",
+        "title": "",
+        "description": "",
+        "order": 8
+      },
+      {
+        "id": "9",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1792763640/_MG_1841_nvyd4n.jpg",
+        "title": "",
+        "description": "",
+        "order": 9
+      },
+      {
+        "id": "10",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1792763641/_MG_1806_uitbbk.jpg",
+        "title": "",
+        "description": "",
+        "order": 10
+      }
+    ],
+    "createdAt": "2026-10-23T15:21:04.096Z",
+    "updatedAt": "2026-10-23T15:21:04.097Z"
+  },
+  {
+    "id": "Morgane",
+    "title": "Studio avec Morgane",
+    "description": "",
+    "category": "portrait",
+    "coverImage": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1792764684/IMG_9951red-_iwndbw.jpg",
+    "eventDate": "2023-02-04",
+    "displayOrder": 1,
+    "photos": [
+      {
+        "id": "5",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1792764684/IMG_9951red-_iwndbw.jpg",
+        "title": "",
+        "description": "",
+        "order": 1
+      },
+       {
+        "id": "2",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1777983264/IMG_9966-5_puhdv5.jpg",
+        "title": "",
+        "description": "",
+        "order": 5
+      },
+      {
+        "id": "1",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756480391/IMG_9966-4_kfalsz.jpg",
+        "title": "",
+        "description": "",
+        "order": 3
+      },
+     
+      {
+        "id": "3",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1777983716/IMG_9947-4_vmyjn9.jpg",
+        "title": "",
+        "description": "",
+        "order": 4
+      },
+      {
+        "id": "4",
+        "src": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1777983720/IMG_7293-2_v8r0n2.jpg",
+        "title": "",
+        "description": "",
+        "order": 5
+      }
+    ],
+    "createdAt": "2026-10-23T15:05:07.819Z",
+    "updatedAt": "2026-10-23T15:05:07.825Z"
+  },
+  {
     "id": "Kayne-FMF",
     "title": "Kayne au Fertois Metal Fest",
     "description": "Retour sur le concert de kayne au Fertois Metal Fest",
@@ -830,6 +1013,7 @@ export const albumsData = [
     "description": "La danse du corps et du cercle, suspendue entre eau et lumière.",
     "category": "portrait",
     "coverImage": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756200568/_MG_5517_1_nc7iy7.jpg",
+    "eventDate": "2025-08-07",
         "displayOrder": 2,
     "photos": [
       {
@@ -893,11 +1077,12 @@ export const albumsData = [
     "updatedAt": "2025-01-26T10:00:00.000Z"
   },
   {
-    "id": "portraits-clara",
-    "title": "Clara, rêverie au jardin du château",
+    "id": "portraits-carla",
+    "title": "Carla, rêverie au jardin du château",
     "description": "Sous les pierres anciennes, la lumière caresse la douceur d’un instant suspendu.",
     "category": "portrait",
     "coverImage": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288469/_MG_4694_suin7j.jpg",
+    "eventDate": "2025-03-21",
         "displayOrder": 3,
     "photoCount": 9,
     "photos": [
@@ -974,6 +1159,7 @@ export const albumsData = [
     "description": "Une série de portraits capturant l'élégance et la personnalité unique de chaque sujet.",
     "category": "portrait",
     "coverImage": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756288508/_MG_4433-2_ujg7we.jpg",
+    "eventDate": "2025-03-01",
         "displayOrder": 4,
     "photoCount": 4,
     "photos": [
@@ -1187,6 +1373,7 @@ export const albumsData = [
     "description": "Exploration de la beauté naturelle à travers des paysages époustouflants.",
     "category": "landscape",
     "coverImage": "https://res.cloudinary.com/dgcpwz1u4/image/upload/v1756308038/_MG_0511-min_mw7dnn.jpg",
+    "eventDate": "2021-05-25",
         "displayOrder": 6,
     "photos": [
       {
