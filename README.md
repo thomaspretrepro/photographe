@@ -171,3 +171,6 @@ Valeurs utilisées : `portrait`, `landscape`, `concerts`, `spectacle`, `essais`,
 ## 🗺️ À faire
 
 - Flux Instagram (composants présents mais désactivés sur la page d'accueil)
+- Améliorer l'affichage des photos
+- Trouver une solution pour gérer les vignettes visuelles
+- Fixer l'ordre (`order`) dans `albums.js`

@@ -13,5 +13,6 @@ export const ALBUM_CATEGORIES = {
   landscape: 'Paysages',
   concerts: 'Concerts',
   events: 'Événements',
-  essais: 'Essais'
+  essais: 'Essais',
+  animaux: 'Animaux'
 };
