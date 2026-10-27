@@ -103,19 +103,9 @@ const InstagramFeed = ({
           <i className="instagram-feed__icon">📸</i>
           Derniers posts Instagram
         </h3>
-        <a 
-          href="https://www.instagram.com/tom_p_pics/" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="instagram-feed__follow-btn"
-        >
-          Suivre sur Instagram
-        </a>
       </div>
 
-      <div 
-        className="instagram-feed__grid"
-        style={{ '--grid-columns': gridColumns }}
+     <div className="instagram-feed__track">
       >
         {posts.map((post) => (
           <div 
