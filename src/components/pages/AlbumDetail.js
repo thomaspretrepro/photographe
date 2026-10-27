@@ -135,10 +135,11 @@ const AlbumDetail = () => {
             {album.photos.map((photo, index) => (
               <div 
                 key={photo.id} 
-                className={`photo-item ${album.category === 'portrait' ? 'is-portrait' : ''}`}
+                className={`photo-item`}
                 onClick={() => openLightbox(photo, index)}
               >
-                <img src={photo.src} alt={photo.title || `Photo ${index + 1}`} />
+                <img src={photo.src} alt={photo.title || `Photo ${index + 1}`}   loading="lazy"
+  decoding="async" />
                 {(photo.title || photo.description) && (
                   <div className="photo-overlay">
                     {photo.title && <h3>{photo.title}</h3>}
