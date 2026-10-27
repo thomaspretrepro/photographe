@@ -198,4 +198,5 @@ class InstagramService {
 }
 
 // Export d'une instance unique
-export default new InstagramService();
+const instagramService = new InstagramService();
+export default instagramService;
