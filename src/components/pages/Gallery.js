@@ -62,7 +62,7 @@ const Gallery = () => {
 
   return (
     <div className="gallery">
-        <Helmet>
+      <Helmet>
         <title>Galerie Photo | Thomas Prêtre Photographe</title>
         <meta name="description" content="Explorez mes collections photographiques : portraits, paysages, concerts et plus encore." />
         <meta property="og:title" content="Galerie Photo | Thomas Prêtre" />
@@ -98,13 +98,19 @@ const Gallery = () => {
         {filteredAlbums.length > 0 ? (
           <div className="albums-grid">
             {filteredAlbums.map(album => (
-              <Link 
-                to={`/gallery/${album.id}`} 
-                key={album.id} 
+              <Link
+                to={`/gallery/${album.id}`}
+                key={album.id}
                 className="album-card"
               >
                 <div className="album-image">
-                  <img src={album.coverImage} alt={album.title} />
+                  <img
+                    src={album.coverImage}
+                    alt={album.title}
+                    loading="lazy"
+                    decoding="async"
+
+                  />
                   <div className="album-overlay">
                     <div className="album-info">
                       <h3>{album.title}</h3>

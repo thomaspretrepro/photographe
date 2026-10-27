@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { APP_CONFIG } from '../../utils/constants';
+import InstagramFeed from '../InstagramFeed';
 import './Home.css';
 
 const Home = () => {
@@ -178,7 +179,7 @@ const Home = () => {
       </section>
 
       {/* Instagram Feed Section (désactivée : réimporter InstagramFeed pour la réactiver) */}
-      {/* <section className="instagram-section">
+      <section className="instagram-section">
         <div className="container">
           <InstagramFeed
             limit={6}
@@ -188,7 +189,7 @@ const Home = () => {
             className="home-instagram-feed"
           />
         </div>
-      </section> */}
+      </section>
 
       {/* CTA Section */}
       <section className="cta-section">

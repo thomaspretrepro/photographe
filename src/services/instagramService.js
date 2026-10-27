@@ -1,8 +1,6 @@
-// Service pour récupérer les données Instagram via l'API Basic Display
+// Service pour récupérer les posts Instagram via /api/instagram.
 class InstagramService {
   constructor() {
-    this.accessToken = process.env.REACT_APP_INSTAGRAM_ACCESS_TOKEN;
-    this.baseUrl = 'https://graph.instagram.com';
     this.cacheKey = 'instagram_feed_cache';
     this.cacheExpiry = 30 * 60 * 1000; // 30 minutes en millisecondes
   }
@@ -13,51 +11,31 @@ class InstagramService {
    * @returns {Promise<Array>} - Array des posts Instagram
    */
   async getFeed(limit = 9) {
-    try {
-      // Vérifier le cache d'abord
-      const cachedData = this.getCachedData();
-      if (cachedData) {
-        return cachedData.slice(0, limit);
-      }
-
-      // Si pas de token, retourner des données de démonstration
-      if (!this.accessToken) {
-        console.warn('Instagram Access Token non configuré, utilisation des données de démo');
-        return this.getDemoData(limit);
-      }
-
-      // Récupérer les données depuis l'API Instagram
-      const response = await fetch(
-        `${this.baseUrl}/me/media?fields=id,caption,media_type,media_url,thumbnail_url,permalink,timestamp&limit=${limit}&access_token=${this.accessToken}`
-      );
-
-      if (!response.ok) {
-        throw new Error(`Erreur API Instagram: ${response.status}`);
-      }
-
-      const data = await response.json();
-      
-      // Filtrer seulement les images et vidéos
-      const posts = data.data
-        .filter(post => post.media_type === 'IMAGE' || post.media_type === 'VIDEO')
-        .map(post => ({
-          id: post.id,
-          caption: post.caption || '',
-          mediaType: post.media_type,
-          mediaUrl: post.media_type === 'VIDEO' ? post.thumbnail_url : post.media_url,
-          permalink: post.permalink,
-          timestamp: post.timestamp
-        }));
-
-      // Mettre en cache les données
-      this.setCachedData(posts);
-
-      return posts;
-    } catch (error) {
-      console.error('Erreur lors de la récupération du feed Instagram:', error);
-      // En cas d'erreur, retourner les données de démo
-      return this.getDemoData(limit);
+    const cachedData = this.getCachedData();
+    if (cachedData) {
+      return cachedData.slice(0, limit);
     }
+
+    const response = await fetch(`/api/instagram?limit=${limit}`);
+    if (!response.ok) {
+      throw new Error(`Erreur API: ${response.status}`);
+    }
+
+    const { posts: rawPosts } = await response.json();
+
+    const posts = rawPosts
+      .filter(post => ['IMAGE', 'VIDEO', 'CAROUSEL_ALBUM'].includes(post.media_type))
+      .map(post => ({
+        id: post.id,
+        caption: post.caption || '',
+        mediaType: post.media_type,
+        mediaUrl: post.media_type === 'VIDEO' ? post.thumbnail_url : post.media_url,
+        permalink: post.permalink,
+        timestamp: post.timestamp
+      }));
+
+    this.setCachedData(posts);
+    return posts;
   }
 
   /**
@@ -200,10 +178,10 @@ class InstagramService {
     if (diffDays === 1) return 'Il y a 1 jour';
     if (diffDays < 7) return `Il y a ${diffDays} jours`;
     if (diffDays < 30) return `Il y a ${Math.ceil(diffDays / 7)} semaines`;
-    
-    return date.toLocaleDateString('fr-FR', { 
-      day: 'numeric', 
-      month: 'short' 
+
+    return date.toLocaleDateString('fr-FR', {
+      day: 'numeric',
+      month: 'short'
     });
   }
 
@@ -220,4 +198,5 @@ class InstagramService {
 }
 
 // Export d'une instance unique
-export default new InstagramService();
+const instagramService = new InstagramService();
+export default instagramService;

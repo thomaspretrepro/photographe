@@ -96,6 +96,10 @@
   transition: transform 0.3s ease;
 }
 
+.photo-item.is-portrait img {
+  object-position: top;
+}
+
 .photo-item:hover img {
   transform: scale(1.05);
 }

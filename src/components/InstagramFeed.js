@@ -103,19 +103,9 @@ const InstagramFeed = ({
           <i className="instagram-feed__icon">📸</i>
           Derniers posts Instagram
         </h3>
-        <a 
-          href="https://www.instagram.com/tom_p_pics/" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="instagram-feed__follow-btn"
-        >
-          Suivre sur Instagram
-        </a>
       </div>
 
-      <div 
-        className="instagram-feed__grid"
-        style={{ '--grid-columns': gridColumns }}
+     <div className="instagram-feed__track">
       >
         {posts.map((post) => (
           <div 
@@ -130,14 +120,14 @@ const InstagramFeed = ({
                 className="instagram-feed__image"
                 loading="lazy"
               />
-              <div className="instagram-feed__overlay">
+              {/* <div className="instagram-feed__overlay">
                 <div className="instagram-feed__overlay-content">
                   <i className="instagram-feed__instagram-icon">📷</i>
                   {post.mediaType === 'VIDEO' && (
                     <i className="instagram-feed__video-icon">▶️</i>
                   )}
                 </div>
-              </div>
+              </div> */}
             </div>
             
             {(showCaption || showDate) && (
