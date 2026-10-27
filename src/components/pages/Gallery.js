@@ -104,7 +104,11 @@ const Gallery = () => {
                 className="album-card"
               >
                 <div className="album-image">
-                  <img src={album.coverImage} alt={album.title} />
+                  <img
+                    src={album.coverImage}
+                    alt={album.title}
+                  
+                  />
                   <div className="album-overlay">
                     <div className="album-info">
                       <h3>{album.title}</h3>

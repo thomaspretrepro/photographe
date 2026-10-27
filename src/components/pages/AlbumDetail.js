@@ -135,7 +135,7 @@ const AlbumDetail = () => {
             {album.photos.map((photo, index) => (
               <div 
                 key={photo.id} 
-                className="photo-item"
+                className={`photo-item ${album.category === 'portrait' ? 'is-portrait' : ''}`}
                 onClick={() => openLightbox(photo, index)}
               >
                 <img src={photo.src} alt={photo.title || `Photo ${index + 1}`} />
