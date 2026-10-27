@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { APP_CONFIG } from '../../utils/constants';
+import InstagramFeed from '../InstagramFeed';
 import './Contact.css';
 
 const Contact = () => {
@@ -158,6 +159,17 @@ const Contact = () => {
             </form>
           </div>
         </div>
+              <section className="instagram-section">
+        <div className="container">
+          <InstagramFeed
+            limit={6}
+            showCaption={false}
+            showDate={false}
+            gridColumns={3}
+            className="home-instagram-feed"
+          />
+        </div>
+      </section>
       </div>
     </div>
   );
