@@ -120,14 +120,14 @@ const InstagramFeed = ({
                 className="instagram-feed__image"
                 loading="lazy"
               />
-              <div className="instagram-feed__overlay">
+              {/* <div className="instagram-feed__overlay">
                 <div className="instagram-feed__overlay-content">
                   <i className="instagram-feed__instagram-icon">📷</i>
                   {post.mediaType === 'VIDEO' && (
                     <i className="instagram-feed__video-icon">▶️</i>
                   )}
                 </div>
-              </div>
+              </div> */}
             </div>
             
             {(showCaption || showDate) && (
